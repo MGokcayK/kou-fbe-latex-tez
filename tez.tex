@@ -1,0 +1,111 @@
+\documentclass[msc]{kou}
+
+% Bazı temel bilgiler.
+\makeatletter
+
+% Kaynak dosyası.
+\addbibresource{kaynaklar.bib}
+
+% Başlık
+\baslik{Tez Yazımı için Latex Kullanımı}	
+
+% İngilizce başlık
+\thetitle{Latex for Writing Thesis}
+
+% Yazar (Soyad Büyük yazılması gerekmektedir.)
+\yazar{Mehmet Gökçay KABATAŞ}         								
+
+% Anabilim dalı - departman
+\bolum{Bilgisayar Mühendisliği Anabilim Dalı}						
+
+% Tarih
+\tarihAY{Ocak}
+\tarihYIL{2022}
+
+% Savunma Tarihi
+\starih{28.01.2022}		
+
+% Juri Üyeleri Adıları ile Açıklamaları.
+\jrBIR{Prof.Dr./Doç.Dr./Dr. Öğr. Üyesi}						
+\jrBIRd{Danışman, Kocaeli Üniv.}						
+
+\jrIKI{Prof.Dr./Doç.Dr./Dr. Öğr. Üyesi}						
+\jrIKId{Jüri Üyesi, Kocaeli Üniv.}
+
+\jrUC{Prof.Dr./Doç.Dr./Dr. Öğr. Üyesi}						
+\jrUCd{Jüri Üyesi, İTÜ}						
+
+\jrDORT{Prof.Dr./Doç.Dr./Dr. Öğr. Üyesi}						
+\jrDORTd{Jüri Üyesi, Sakarya Üniv.}						
+
+\jrBES{Prof.Dr./Doç.Dr./Dr. Öğr. Üyesi}						
+\jrBESd{Jüri Üyesi, İstanbul Üniv.}	
+
+\makeatother
+
+\begin{document}
+
+\kapakolustur
+\onayolustur
+
+% Romen rakamlarının başlatılması
+\clearpage
+\pagenumbering{roman} 
+
+% Dizinleri  yazdırırken satır aralıklarının düzenlenmesi için
+% grup içerisine alınmış ve düzenleme yapılmıştır. Ayrıca gerekli
+% dizin isimlendirmeleri düzenlenmiştir.
+\begingroup
+\singlespacing
+
+\etikolustur
+\fikriolustur
+
+\input{bolumler/onsoz.tex}
+\onsozolustur
+
+\renewcommand{\listfigurename}{Şekiller Dizini}
+\renewcommand{\listtablename}{Tablolar Dizini}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\chapter*{Simgeler ve Kısaltmalar Dizini}
+\input{bolumler/simgeler.tex}
+\tocless\section{Kısaltmalar}
+\addtocounter{section}{1}
+\input{bolumler/kisaltmalar.tex}
+
+\input{bolumler/ozet.tex}
+\ozetolustur
+
+\input{bolumler/abstract.tex}
+\createabstract
+\endgroup
+
+% Latin/Arabic rakamların kullanılması
+\clearpage
+\pagenumbering{arabic}
+
+% Bolumlerin eklenmesi
+\input{bolumler/tutorial.tex}
+
+% Satır aralığının tekrar 1 satır olduğu Ekler,
+% Kaynaklar, Kişisel yayın ve eser ile özgeçmiş bölümünün
+% gruplandırılması
+\begingroup
+\singlespacing
+\printbibliography[title={Kaynaklar}, notcategory=nobibliography]
+
+% Ekler bölümü var ise hem "\eklerolustur" komutunu hemde 
+% gerekli .tex dosyalarını input olarak giriniz.
+\eklerolustur
+\input{bolumler/ekA.tex}
+
+% Kişisel yayın ve eser bölümü
+\input{bolumler/kisiseleser.tex}
+% Özgeçmiş bölümü
+\input{bolumler/ozgecmis.tex}
+
+\endgroup
+\end{document}

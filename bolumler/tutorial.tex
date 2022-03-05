@@ -1,0 +1,541 @@
+\chapter{Giriş}
+Akademik yazımlarda yazarın isterlerini gerçekleştirmek üretimi kolaylaştırmaktadır. Latex bu kullanımı kolaylaştıran programlardan biridir. Ücretsiz olması ve birçok işletim sisteminde çalıştırılmasının dışında online birçok site üzerindende yazının yazımının gerçekleştirilmesi kullanımını her geçen gün arttırmaktadır. Bu yazıda Kocaeli Üniversitesi Fen Bilimleri Ensitüsü tarafından tanımlanan \autocite{koutyk} kılavuzdaki kurallar etrafında tanımlanmış latex sınıfının nasıl kullanılacağı ele alınmıştır. Bunun için gerekli olan "kou.cls" adlı latex sınıf dosyasıdır. Bu döküman içerisinde bahsedilen diğer dosyalar zorunlu olmamakla beraber kullanımları tavsiye edilmektedir.
+
+
+
+\chapter{Tez Yazımı}
+Tez yazımının daha rahat yönetilebilmesi için "tez.tex" adlı ana dosya oluşturulmuştur. Bu dosya üzerinden taslak için gerekli temel bilgiler tanımlanmış, ayrıca genel mimari kurulmuştur. Şekil \ref{teztex} içerisinde dosya içeriği gösterilmiştir. 
+
+\lstinputlisting[label=teztex, caption="tez.tex" adlı dosya içeriği, language={[LaTeX]{TeX}}]{tez.tex}
+
+"$\backslash$documentclass[msc]\{kou\}" komutu oluşturulan "kou.cls" adlı sınıfın yüklendiği komuttur. "tez.tex" dosyası ile aynı klasör içerisinde bulunması gerekmektedir. "[msc]" opsiyonel bir girdi olup dosyanın türünü belirtmektedir. Eğer dosya yüksek lisans tezi ise "msc", doktora tezi ise "phd" yazılabilmektedir. Eğer boş bırakılırsa dosya türü proje olarak belirlenmektedir.
+
+"$\backslash$addbibresource\{x.bib\}" komutu tezde kullanılan kaynakların yönetiminin sağlandığı sistem için gerekli olan dosyayı belirtmektedir. Bölüm \ref{ch:ref} içerisinde "x.bib"'te neler olması gerektiği ve nasıl kullanılması gerektiği anlatılmıştır. Dosya adı yazar tarafından belirlenebilmektedir ve bu çalışmada "kaynaklar.bib" adlı dosya kullanılmıştır.
+
+"$\backslash$baslik\{\}" komutu tezin başlığının tanımlandığı komuttur. 
+
+"$\backslash$thetitle\{\}" komutu tezin ingilizce başlığının tanımlandığı komuttur. 
+
+"$\backslash$yazar\{\}" komutu tezin yazarının belirlendiği komuttur. Bu komut içerisinde yazar soyadının büyük yazılması gerekmektedir.
+
+"$\backslash$bolum\{\}" yazarın bulunduğu anabilim dalının belirlendiği komuttur. 
+
+"$\backslash$tarihAY\{\}" "$\backslash$tarihYIL\{\}" tezin yayımlandığı ay ve yıl tarihleridir.
+
+"$\backslash$starih\{\}" tez savunmasının yapıldığı tarihtir. Onay sayfasında gereklidir. 
+
+"$\backslash$jrX\{\}" X. jüri üyesi ismini, "$\backslash$jrXd\{\}" X. juri üyesinin açıklamasını belirtmektedir. Eğer üye sayısı 5'ten az ise, kapatılmak istenilen üye komutlarının başına "\%" ekleyerek yorum satırı yapılabilir. Böylece istenilen sayıda jüriye ulaşılmış olur. 
+
+Buraya kadar olan tüm komutlar dökümanın yazdırılmadan evvel doldurulması gereken bilgileridir. "$\backslash$begin\{document\}" komutu ile beraber yazım işlemi başlamakta ve bölümlerin düzenlenmesi yapılmaktadır. 
+
+"$\backslash$kapakolustur" tez kapağının oluşturulduğu komuttur. 
+
+"$\backslash$onayolustur" onay sayfasının oluşturulduğu komuttur. 
+
+"$\backslash$clearpage" ve "$\backslash$pagenumbering\{roman\}" sayfa numaralandırılmasının roman harfleriyle başlatılmasını sağlamaktadır. 
+
+Tez yazım kılavuzu içerisinde bazı bölümlerin 1 satır boşluklu, bazı bölümlerin 1.5 satır boşluklu olması belirtilmiştir. Kılavuzda belirtildiği üzere "Tez/Proje yazımında, önsöz, içindekiler, tablo, şekil, simge ve kısaltma listeleri, özetler, ekler, özgeçmiş, kaynak listesi bölümlerinin ve metin içerisinde geçen şekil, tablo açıklamaları, alıntı ve dip not yazımında 1 satır aralığı kullanılmalıdır." isterinin gerçekleşmesi için bazı düzenlemeler yapılmıştır. 
+
+"$\backslash$begingroup" yeni bir grup açarak "$\backslash$endgroup" komutu arasındaki komutları aynı komutlarla işlemektedir. "$\backslash$singlespacing" komutu bu grup içerisinde 1 satır aralığı kullanılmasını sağlamaktadır. 
+
+Metin içerisinde geçen şekil, tablo açıklamaları, alıntı ve dip not yazımında grup olmaksızın 1 satır aralığı kullanılmaktadır. 
+
+"$\backslash$etikolustur" etik beyan ve araştırma fonu desteği sayfasını ve "$\backslash$fikriolustur" yayımlama ve fikri mülkiyet hakları sayfasını oluşturmaktadır. 
+
+"$\backslash$input\{a.tex\}" komutu "a.tex" adlı dosyanın eklenmesini sağlayan temel latex komutudur. Bu komut sayesinde yazar yazıyı istediği kadar parçaya ayırarak yazabilir ve ana dosya içerisine bu komut ile ekleyebilir. 
+
+"$\backslash$input\{bolumler/onsoz.tex\}" "bolumler" adlı klasörde bulunan "onsoz.tex" dosyasını girdi olarak almaktadır. Bu dosya içerisinde "$\backslash$onsoz\{\}" adlı komut bulunmaktadır. Bu komut içerisinde yazar önsözü yazabilmektedir. "$\backslash$onsozolustur" komutu ise önsöz sayfasını oluşturmaktadır. Önsözün bu şekilde iki komut ile oluşturulmasının sebebi sayfa içerisinde tarih ve yazar ismi bilgisinin eklenmesidir. Bu bilgiler yukarıda belirtilen ilgili komutlardan elde edilerek kullanılmaktadır. 
+
+"$\backslash$renewcommand\{\}" komutların yeniden atanmasını sağlayan komuttur ve "tez.tex" içerisindeki kullanımları şekil ve tablo dizinlerinin sayfa başlığının düzenlenmesi üzerinedir.
+
+"$\backslash$tableofcontents", "$\backslash$listoffigures" ve "$\backslash$listoftables" sırasıyla içindekiler, şekiller dizini ve tablolar dizinini oluşturmaktadır. 
+
+Bölüm \ref{ch:simge} içerisinde simgeler ve kısaltmaların nasıl tanımlanacağı açıklanmıştır.
+
+Bölüm \ref{ch:ozet} içerisinde özetlerin nasıl tanımlanacağı açıklanmıştır.
+
+"$\backslash$input\{bolumler/tutorial.tex\}" komutu "bolumler" adlı klasör içerisinde bulunan "tutorial.tex" adlı dosyayı eklemektedir. Yazar bölümleri ister tek bir dosya üzerinden yazabilir isterse "bolum2.tex, bolum3.tex" gibi alt bölümlere ayırıp, ayırdığı her bölümü input komutuyla "tez.tex" dosyasına ekleyerek yazabilir.
+
+"$\backslash$printbibliography\{\}" komutu kaynaklar bölümü yazdıran komuttur. Kaynakların nasıl ekleneceği Bölüm \ref{ch:ref} içerisinde anlatılmıştır.
+
+Eğer tez içerisinde "Ek" bölümü var ise "$\backslash$eklerolustur" komutunun çağırılması gerekmektedir. Bu komut "Ek" bölümünün kapağını oluşturmaktadır. Bölüm \ref{ch:ek} içerisinde nasıl alt ekler bölümü oluşturulacağı anlatılmıştır. 
+
+"$\backslash$input\{bolumler/kisiseleser.tex\}" ve "$\backslash$input\{bolumler/ozgecmis.tex\}" komutları ile kişisel yayın ve eser bölümü ile özgeçmiş bölümlerini ilgili dosyadan teze eklemektedir. Bölüm \ref{ch:ozgec} ile bu bölümlerin yazımında kullanılan komutlar belirtilmiştir.
+
+\chapter{Başlıklar}
+Birinci derece başlıklar "$\backslash$chapter\{\}" komutu ile oluşturulmaktadır. Birinci derece başlıklar istenildiği üzere hem sayfada hemde içindekiler listesinde büyük harfle yazılmaktadır. 
+
+İkinci derece başlıklar "$\backslash$section\{\}" komutu ile oluşturulmaktadır. Burada başlığın harflerinin büyüklük/küçüklük ayarlaması yazar tarafına bırakılmıştır.
+
+Üçüncü derece başlıklar "$\backslash$subsection\{\}" komutu ile oluşturulmaktadır. Burada başlığın harflerinin büyüklük/küçüklük ayarlaması yazar tarafına bırakılmıştır.
+
+Dördüncü derece başlıklar "$\backslash$subsubsection\{\}" komutu ile oluşturulmaktadır. Burada başlığın harflerinin büyüklük/küçüklük ayarlaması yazar tarafına bırakılmıştır.
+
+Tüm başlıklar kılavuzda belirtilen numaralandırmaya uygun şekilde düzenlenmektedir. 
+
+\chapter{Sayfa Numaralandırması}
+Sayfa numaralandırmaları "tez.tex" dosyası içerisinde kılavuza uygun olarak tanımlanmıştır. Eğer yazar "tez.tex" dosyasını kullanmıyor ise "$\backslash$clearpage" ve "$\backslash$pagenumbering\{X\}" komutlarıyla numaralandırma stilini ayarlayabilmektedir. Eğer romen rakamları kullanılmak isteniyorsa X yerine "roman", eğer latin rakamları kullanılmak isteniyorsa ise X yerine "arabic" yazılmalıdır. Romen rakamları büyük harfler ile yazılmak isteniyor ise "Roman" yazılmalıdır.  
+
+\chapter{Tablo, Şekil ve Kod Parçaları}
+Tablo, şekil ve kod parçaları kılavuzda belirlenen kurallar üzerinden numaralandırılmaktadır. Bu kurallarda kod parçalarının isimlendirilmesi "Şekil" olarak geçmekte ve numaralandırılması da şekiller ile beraber yapılması belirtilmektedir. 
+
+\section{Tablo Oluşturma}
+Tablo, oluşturma standart "table" ve "tabular" ortamlarıyla oluşturulabilir. Bu ortamların nasıl kullanılacağı bu dökümanda anlatılmamıştır. Tablo oluşturmada dikkat edilmesi gereken husus başlığın tablonun üstüne gelmesidir. Bunun için "tabular" ortamından önce "$\backslash$caption\{\}" komutu kullanılmalıdır. Eğer bu komut "tabular" ortamından sonra kullanılıyor olsaydı başlık tablonun altında kalacaktı. Tablo ile yazı arasında kalan boşluklar istenildiği şekilde ayarlanmıştır. 
+
+\begin{table}[!htbp]
+	\caption{Örnek tablo}
+	\label{table:ornek}
+	\centering
+	\begin{tabular}{ |c|c|c| } 
+		\hline
+		cell1 & cell2 & cell3 \\ 
+		cell4 & cell5 & cell6 \\ 
+		cell7 & cell8 & cell9 \\ 
+		\hline
+	\end{tabular}
+\end{table}
+
+Şekil \ref{code:table}, oluşturulan örnek tablo (Tablo \ref{table:ornek}) kod parçasını göstermektedir. 
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:table, caption=Örnek tablo yazımı]
+\begin{table}[!htbp]
+	\caption{Örnek tablo}
+	\label{table:ornek}
+	\centering
+	\begin{tabular}{ |c|c|c| } 
+		\hline
+		cell1 & cell2 & cell3 \\ 
+		cell4 & cell5 & cell6 \\ 
+		cell7 & cell8 & cell9 \\ 
+		\hline
+	\end{tabular}
+\end{table}
+\end{lstlisting}
+
+\section{Şekil Oluşturma}
+Şekil oluşturmada "figure" ortamı kullanılması önerilmektedir. Eğer bir şekil içerisinde birden çok alt şekil kullanılacak ise ayrırca "subfigure" ortamı kullanılmalıdır.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.5\textwidth]{resimler/kou_logo.png}	
+	\caption{Kocaeli Üniversitesi logosu}
+	\label{fig:kou}
+\end{figure}
+
+Şekil için dikkat edilecek hususlardan biri şekil açıklamasının şeklin altında olmasıdır. Bunun için tablonun aksine "$\backslash$caption\{\}" komutu ""$\backslash$includegraphics\{\}" komutunun altında olmalıdır. Şekil \ref{fig:kou} oluşturan kod parçası Şekil \ref{code:figure} ile gösterilmiştir.
+
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:figure, caption=Kocaeli Üniversitesi logosunun yazımı]
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.5\textwidth]{resimler/kou_logo.png}	
+	\caption{Kocaeli Üniversitesi logosu}
+	\label{fig:kou}
+\end{figure}
+\end{lstlisting}
+
+
+\section{Kod Parçası}
+Kod parçaları "lstlisting" ortamı ile oluşturulmaktadır. Stili "kou.cls" içerisinde tanımlanmışır. Yazar kod parçası için girmesi gereken üç adet bilgi bulunmaktadır.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:code, caption=Kocaeli Üniversitesi logosunun yazıldığı kod parçasının yazımı]
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:figure, caption=Kocaeli Üniversitesi logosunun yazımı]
+	\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=0.5\textwidth]{resimler/kou_logo.png}
+		\caption{Kocaeli Üniversitesi logosu}
+		\label{fig:kou}
+	\end{figure}
+end{lstlisting}
+\end{lstlisting}
+
+Şekil \ref{code:code}\footnote{Son satırda "end" komutundan evvel $\backslash$ bulunmaktadır.}, Şekil \ref{code:figure} içerisinde yazılan kod parçasının nasıl yazıldığını göstermektedir. "language" kod parçasının hangi dilde yazıldığını göstermektedir. "caption" şekil altında yazılan başlığı göstermektedir. "label" ise yazı içerisinde referans verilmek istenildiğinde kullanılacak etiketi göstermektedir.
+
+Şekil \ref{code:code2} bütün bir kod dosyasının içeriğinin kod parçacığı olarak alınmasını göstermektedir.
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:code2, caption=tez.tex dosyasının içeriğinin yazılması]
+\lstinputlisting[label=teztex, caption="tez.tex" adlı dosya içeriği, language={[LaTeX]{TeX}}]{tez.tex}
+\end{lstlisting}
+
+\chapter{Denklem Yazımı}
+Denklemler standart "equation" ortamı ile yazılmaktadır. Kılavuzda istenilen format olan denklem sol tarafa yaslı ve numarası sağ tarafa yaslı şeklinde yazılmaktadır. Ayrıca hizalama yapılmak isteniyorsa "alignat" ortamı kullanılması önerilmektedir. Eğer kendi içerisinde harflendirilerek alt denklemler yazılacak ise "subequations" ortamı kullanılması önerilmektedir. 
+
+Denklemlerin yazımında dikkat edilecek hususlardan biri yazı ile denklem arası boşluktur. Bu boşluğun olmaması için denklem ile yazı arasında boş satır olmaması gerekmektedir. Denklem \ref{eq:base} ile bu cümle arasındaki boşluk
+\begin{equation}
+	\label{eq:base}
+	a = b + c
+\end{equation}
+Şekil \ref{code:eq} ile gösterilmiştir. Tablo, şekil ve kod parçaçığı için bu durum geçerli değildir.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:eq, caption=Örnek denklem yazımı]
+	...olmaması gerekmektedir. Denklem \ref{eq:base} ile bu cümle arasındaki boşluk
+	\begin{equation}
+		\label{eq:base}
+		a = b + c
+	\end{equation}
+	Şekil \ref{code:eq} ile gösterilmiştir. Tablo...
+\end{lstlisting}
+
+
+\chapter{Alıntılar ve Dipnotlar}
+Alıntılar kılavuza uygun olarak düzenlenen "alinti" ortamı ile yazılabilmektedir. Şekil \ref{code:alinti} temel "alinti" ortamının kullanımını göstermektedir.
+
+\begin{alinti}{Alıntı sahibi}
+	\lipsum[3]
+\end{alinti}
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:alinti, caption=Örnek alıntı yazımı]
+\begin{alinti}{Alıntı sahibi}
+	\lipsum[3]
+\end{alinti}
+\end{lstlisting}
+
+\section{Dipnotlar}
+Dipnotlar ise "$\backslash$footnote\{\}" komutu ile yazılabilmektedir. Her sayfada dipnot numarası 1'den başlamaktadır. Kılavuzda belirlenen isterlere uygun olarak düzenlenmiştir.
+
+
+\chapter{Maddelendirme}
+\label{ch:madde}
+Maddelendirme "maddelendir" ortamı üzerinden oluşturulmaktadır. "maddelendir" ortamı "enumerate" ortamının kılavuza uygun olarak düzenlenmiş halidir. Lakin istenildiği taktirde "enumerate" ortamıda kullanılabilmektedir. Standart "enumerate" ortamı istenilen satır boşluklarını gerçekleştirmeyebilir. Yazar bunu dikkat almalıdır. "maddelendir" ortamında genellikle yazar tarafından maddelendirme şekli değiştirilmektedir. 
+
+\begin{maddelendir}[label=\arabic*.]
+	\item Madde bir.
+	\item Madde iki.
+	\item Madde üç.
+\end{maddelendir}
+
+Şekil \ref{code:madde} yukarıda tanımlandırılan maddelendirmeyi göstermektedir. "label=$\backslash$arabic*." maddelendirmenin etiketlendirmesini latin rakamları ile gerçekteştirir. Romen rakamları için  "label=$\backslash$romen*." komutu kullanılabilir. Rakam yerine $\bullet$ için "label=\$$\backslash$bullet\$" komutu kullanılabilmektedir. Numaralandırmanın sonuna nokta yerine ")" konumlası için ise  "label=$\backslash$arabic*)" komutu gerekmektedir.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:madde, caption=Örnek maddelendirme]
+\begin{maddelendir}[label=\arabic*.]
+	\item Madde bir.
+	\item Madde iki.
+	\item Madde üç.
+\end{maddelendir}
+\end{lstlisting}
+
+
+\chapter{Algoritma}
+Kılavuz içerisinde gerektiği taktirde yazılması gereken bir algoritmanın nasıl yazılacağı belirtilmemiştir. Fakat istenildiği taktirde kullanılması için "algoritma" ortamı oluşturulmuştur. Algoritmanın yazıldığı asıl ortam ise "algorithmic" ortamıdır. Algoritma \ref{alg::algo} örnek algoritmayı, Şekil \ref{code:algo} ise örnek algoritmanın yazımını göstermektedir.
+
+\begin{algoritma}
+	\caption{Örnek algoritma}
+	\label{alg::algo}
+	\centering
+	\begin{algorithmic}[1]
+		\For{her oyunda}
+		\State İlk durumun ($s_0$) gözlemlenmesi
+		\For{her ortam adımında}
+		\State Aksiyon seçimi 
+		$$a_t \sim \pi(\cdot|s_t; \theta^\pi)$$
+		\State $\vdots$
+		\EndFor
+		\State $\vdots$
+		\EndFor
+	\end{algorithmic}
+\end{algoritma}
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:algo, caption=Örnek algoritma]
+\begin{algoritma}
+	\caption{Örnek algoritma}
+	\label{alg::algo}
+	\centering
+	\begin{algorithmic}[1]
+		\For{her oyunda}
+		\State İlk durumun ($s_0$) gözlemlenmesi
+		\For{her ortam adımında}
+		\State Aksiyon seçimi 
+		$$a_t \sim \pi(\cdot|s_t; \theta^\pi)$$
+		\State $\vdots$
+		\EndFor
+		\State $\vdots$
+		\EndFor
+	\end{algorithmic}
+\end{algoritma}
+\end{lstlisting}
+
+
+\begin{yataysayfa}
+	\chapter{Yatay Sayfa}
+	Eğer yazı içerisinde sayfa yatay olacak ise bunun için "yataysayfa" ortamı kullanılmalıdır. Bu sayfanın oluşturulması Şekil \ref{code:yatay} içerisinde gösterilmiştir.
+	
+	\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:yatay, caption=Yatay sayfa oluşturulması]
+		\begin{yataysayfa}
+			\chapter{Yatay Sayfa}
+			Eğer yazı içerisinde sayfa yatay olacak ise bunun için "yataysayfa" ortamı kullanılmalıdır. ...
+		\end{yataysayfa}
+	\end{lstlisting}
+
+\end{yataysayfa}
+
+
+
+\chapter{Simgeler ve Kısaltmalar}
+\label{ch:simge}
+Simgeler ve Kısaltlamalar sırasıyla "bolumler/simgeler.tex" ve "bolumler/kisaltmalar.tex" adlı dosyalarda ayrı ayrı tanımlanmıştır. Daha kolay yönetilebilmesi için dosyalar ayrılmıştır. İki dosya içerisinde de kılavuzda belirlenen formata uygun olarak tanımlanmış "simge" ortamı kullanılmıştır. 
+
+"simge" ortamı özet bir maddelendirme ortamıdır. Farkı kılavuzda belirtilen formata özel olmasıdır. İster kısaltmalar isterse simgelerin yazımında "$\backslash$item [kısaltma/simge] açıklama" formatına uygun şekilde maddelendirme yapmak gerekmektedir. Geri kalan format işlemini "simge" ortamı yapmaktadır. 
+
+"simgeler.tex" ve "kisaltmalar.tex" adlı dosyaların kullanımı zorunlu değildir. Yazar isterse kendi dosyalamaları içerisinde kullanabilir. Bu durumda dikkat edilmesi gereken bazı hususlar bulunmaktadır. Bunlar "Simgeler ve Kısaltmalar" bölümünün "$\backslash$chapter*\{Simgeler ve Kısaltmalar\}" komutu ile oluşturmak ve "Kısaltmalar" alt başlığını "$\backslash$tocless$\backslash$section\{Kısaltmalar\}" komutu ile oluşturmaktdır. Burada "$\backslash$tocless" komutu oluşturulan başlığın içindekiler tablosuna eklenmesini önlemektedir. 
+
+\chapter{Özet ve Abstract}
+\label{ch:ozet}
+Özet ve Abstract yazımı aynı yaklaşımla oluşturulan iki sayfadır. Özet bölümü için "$\backslash$ozet" komutu kullanılmaktadır. Anahtar kelimeler için "$\backslash$anahtarkelimeler" komutu kullanılmalıdır. "bolumler/ozet.tex" dosya üzerinden kullanılması tavsiye edilmektedir. "$\backslash$ozet" ve "$\backslash$anahtarkelimeler" komutlarının kullanımından sonra ""$\backslash$ozetolustur" komutu kullanılmaldıır. Böylece "Özet" sayfası dökümana eklenmektedir. 
+
+Abstract bölümü özet bölümüyle kullanılan komutlar dışında aynıdır. "$\backslash$ozet" komutu yerine "$\backslash$theabstract", "$\backslash$anahtarkelimeler" komutu yerine "$\backslash$keywords" ve son olarak "$\backslash$ozetolustur" komutu yerine "$\backslash$createabstract" komutu kullanılmalıdır. 
+
+
+\chapter{Ekler Sayfası}
+\label{ch:ek}
+Ekler bölümlerinin özelliği başlıkların rakam yerine harflendirme ile gerçekleşmesidir (Ek-A, Ek-B,... gibi). Bunun türkçe karaktere uygun olarak gerçekleşebilmesi için her ekler bölünün "ekler" ortamında yazmak gerekmektedir. Kılavuzda ayrıca ekler bölümünün kapağı için sayfanın ortasına büyük harfler ile "EKLER" yazısının yazılması istenmektedir. "tez.tex" içerisinde gösterilen "$\backslash$eklerolustur" komutu bu görevi gerçekleştirmektedir. Şekil \ref{code:ekler} içerisinde Ek-\ref{ch:ekA} sayfasının yazımı gösterilmiştir. Şekil \ref{code:ekler2} ile "tez.tex" içerisinde ekler bölümünün nasıl oluşturulduğu gösterilmiştir.
+
+Ekler için dikkat edilmesi gerkeen husus ekler ortamı kullanıldığında "$\backslash$chapter" komutu kullanmamaktır. Alt başlıklar için "$\backslash$section" ve diğer alt başlık komutları kullanılmalıdır.
+
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:ekler, caption=Örnek ekler sayfası]
+	\begin{ekler}
+		\label{ch:ekA}
+		\lipsum[4-7]
+	\end{ekler}
+\end{lstlisting}
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:ekler2, caption=tez.tex içerisinde ekler bölümünün oluşturulması]
+	\eklerolustur
+	\input{bolumler/ekA.tex}
+\end{lstlisting}
+
+
+\chapter{Referans Verme ve Atıf}
+\label{ch:ref}
+Yazı içerisinde ilgili yerde tablo, şekil, denklem ve kod parçacığı gibi ortamların belirtilmesi için "$\backslash$ref\{etiket\}" komutu kullanılmaktadır. "etiket" ilgili ortam içerisinde "$\backslash$label\{\}" komutu ile belirlenmektedir. Böylece o ortamın sahip olduğu numara/harf doğru şekilde yazılmaktadır. 
+
+\section{Atıf}
+Atıf mekanizması ise farklı komutlarla çalışmaktadır.
+
+\subsection{$\backslash$cite\{\} Komutu}
+Bu atıf cite komutu içindir: \cite{tekyazarArticle}.
+\subsection{$\backslash$cite*\{\} Komutu}
+Bu atıf cite* komutu içindir: \cite*{tekyazarArticle2}.
+\subsection{$\backslash$citeauthor\{\} Komutu}
+Bu atıf citeauthor komutu içindir: \citeauthor{tekyazarArticle}.
+\subsection{$\backslash$citedate\{\} Komutu}
+Bu atıf citedate komutu içindir: \citedate{tekyazarArticle}.
+\subsection{$\backslash$citetitle\{\} Komutu}
+Bu atıf citetitle komutu içindir: \citetitle{tekyazarArticle}.
+\subsection{$\backslash$citetitle*\{\} Komutu}
+Bu atıf citetitle* komutu içindir: \citetitle*{tekyazarArticle2}.
+\subsection{$\backslash$citeyear\{\} Komutu}
+Bu atıf citeyear komutu içindir: \citeyear{tekyazarArticle}.
+\subsection{$\backslash$citeurl\{\} Komutu}
+Bu atıf citeurl komutu içindir: \citeurl{tekyazarArticle}.
+\subsection{$\backslash$autocite\{\} Komutu}
+Bu atıf autocite komutu içindir: \autocite{tekyazarArticle}.
+\subsection{$\backslash$autocite*\{\} Komutu}
+Bu atıf autocite* komutu içindir: \autocite*{tekyazarArticle2}.
+\subsection{$\backslash$textcite\{\} Komutu}
+Bu atıf textcite komutu içindir: \textcite{tekyazarArticle}.
+\subsection{$\backslash$textcite*\{\} Komutu}
+Bu atıf textcite* komutu içindir \textcite*{tekyazarArticle2}.
+\subsection{$\backslash$autocite\{\} İki Yazarlı Atıf}
+Bu atıf iki yazar içindir \autocite{ikiyazarArticle}.
+\subsection{$\backslash$autocite\{\} Üç Yazarlı Atıf}
+Bu atıf üç yazar içindir \autocite{ucyazarArticle}.
+
+\section{Kaynaklar}
+Kaynaklar ".bib" uzantılı dosya içerisinde tanımlanmaktadır. Bu tanımlamalar BibLatex programı ile "kou.cls" içerisinde kılavuza uygun şekilde tanımlanan yazım kuralları ile "Kaynaklar" bölümünde yazılmaktadır. Bu bölümde kılavuzda belirlenen ilgili kaynak türüne ait bilgilerin nasıl tutulacağı anlatılacaktır. 
+
+Kaynaklar ".bib" içerisinde girdi (entry) ve alan (field) bilgileriyle tanımlanmaktadır. Girdi bilgisi "@" ile başlar ve kaynak türüne göre çeşitli isimlendirmeler alır. Alanlar ise girdilerin içerisinde o girdilere özel bilgilerin tanımlandığı çeşitli bilgiler. Dökümanın devamında tanımlanan girdi ve alanlar kılavuz içerisinde belirtilen kurallaara göre yazılmaktadır. Bu girdiler dışında BibLatex tarafından tanınan diğer girdilerin kullanılması durumunda kılavuzda belirtilen kurallara uygun kaynak yazımı gerçekleştirilememektedir.
+
+\subsection{Kaynak: Basılı Makale}
+Eğer kaynak bir basılı makale ise Şekil \ref{bib:article} ile gösterilen şekilde tanımlanabilmektedir. "artic" kaynağa atıf yapılacak etikettir. "author" alanı yazar adlarını tutmaktadır. Her yazar Ad Soyad ikilisi olarak yazılmakta ve her yazar arasında "and" kelimesi bulunmalıdır. Böylece yazarlar birbirinden ayrılabilmektedir. "title" makalenin başlığını tutmaktadır. "journal" makalenin bulunduğu derginin adını tutmaktadır. "volume" ilgili derginin cilt numarasını, "number" dergi sayı numarasını, "year" yılı ve "pages" makalenin bulunduğu sayfaları tutmaktadır.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:article, caption=Kaynak basılı bir makale ise]
+	@article{artic,
+		author    = {W Wechsatol and S Lorente and A Bejan},
+		title     = {Tree-Shaped Insulated Design for Uniform Distribution of Hot Water Over an Area},
+		journal   = {Int. J. Heat Mass Transfer},
+		volume    = {44},
+		number    = 16,
+		year      = {2001},
+		pages     = {3111-3123}
+	}	
+\end{lstlisting}
+
+\subsection{Kaynak: Yayına Kabul Edilmiş Makale}
+Basılı makaleden tek farkı DOI numarasıdır. "doi" alanı DOI numarasını tutmaktadır.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:articleDOI, caption=Kaynak kabul edilmiş bir makale ise]
+	@article{articDoi,
+		author    = {W Wechsatol and S Lorente and A Bejan},
+		title     = {Tree-Shaped Insulated Design for Uniform Distribution of Hot Water Over an Area},
+		journal   = {Int. J. Heat Mass Transfer},
+		volume    = {44},
+		number    = 16,
+		year      = {2001},
+		pages     = {3111-3123},
+		doi		  = {10.1002/er.907}
+	}	
+\end{lstlisting}
+
+
+\subsection{Kaynak: Kitap}
+
+Kaynak kitap ise makaleden farklı olarak "publisher" basım evini, "address" basım yerini ve "edition" basım sayısını tutmaktadır. Gereken değer alanlar ise Şekil \ref{bib:book} içerisinde gösterilmiştir.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:book, caption=Kaynak bir kitap ise]
+@book{kitapEtiket,
+	author    = {J W Tester and M Modell}, 
+	title     = {Thermodynamics and Its Applications},
+	publisher = {Prentice Hall},
+	year      = 1997,
+	address   = {New Jersey},
+	edition   = 3,
+}
+\end{lstlisting}
+
+\subsection{Kaynak: Kitaptan Bir Bölüm}
+
+Kaynak kitaptan bir bölüm ise "editor" editörü, "title" bölüm adını, "booktitle" kitap adını tutmaktadır. Geri kalan alanlar kitap ile aynıdır. 
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:inbook, caption=Kaynak kitaptan bölüm ise]
+@inbook{inbookEtiket,
+	author       = {G A Burton and D L Denton}, 
+	editor       = {D J Hoffman and B A Rattner and G A Burton},
+	title 	     = {Sediment Toxicity Testing},
+	booktitle    = {Handbook of Ecotoxicology},
+	pages        = {111-151},
+	publisher    = {CRC Press},
+	year         = 2003,
+	address      = {New York},
+	edition      = 2,
+}
+\end{lstlisting}
+
+
+\subsection{Kaynak: Bildiri}
+
+Kaynak bildiri ise "title" bildiri adını, "organization" sempozyum adını, "address" sempozyumun yapıldığı yeri, "eventdate" sempozyumun yapıldığı tarihleri tutmaktadır. Sempozyum tarihleri aralık ise başlangıç ve bitiş tarihlerini "/" ile ayrırarak girilmelidir.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:inproceeding, caption=Kaynak bildiri ise]
+@inproceeding{bildiriEtiket,
+	author 		= {A Bilgin and A Mendi and Ç Yağcı},
+	title       = {Esnek Gruplar İçeren Polimerik Ftalosiyaninlerin Sentezi ve Karakterizasyonu},
+	year		= 2006,
+	eventdate   = {2006-08-24/2006-08-25},
+	address     = {Kayseri, Türkiye},
+	organization = {VI. Kimya Kongresi}
+}
+\end{lstlisting}
+
+
+\subsection{Kaynak: Basılmış Tez}
+
+Kaynak tez ise "school" tezin basıldığı üniversiteyi, "address" üniversitenin bulunduğu şehri, "type" tez türünü, "institution" enstitüyü ve "number" YÖK referans numarasını tutmaktadır.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:thesis, caption=Kaynak basılmış tez ise]
+@thesis{mastersthesis,
+	author       = {M Ünlü}, 
+	title        = {Anahtarlı Relüktans Makinasının Modellenmesi ve Dinamik	Davranışı},
+	school       = {Kocaeli Üniversitesi},
+	year         = 2006,
+	address      = {Kocaeli},
+	type		 = {Yüksek Lisans Tezi},
+	institution  = {Fen Bilimleri Enstitüsü}
+}
+
+@thesis{phdthesis,
+	author       = {M Ünlü}, 
+	title        = {Anahtarlı Relüktans Makinasının Modellenmesi ve Dinamik	Davranışı},
+	school       = {Kocaeli Üniversitesi},
+	year         = 2006,
+	type		 = {Doktora Tezi},
+	address      = {Kocaeli},
+	institution  = {Fen Bilimleri Enstitüsü},
+	number		= {1231287321}
+}
+\end{lstlisting}
+
+
+\subsection{Kaynak: Rapor}
+
+Kaynak rapor ise "title" rapor başlığını, "institution" yayınlayan kurumu, "number" rapor numarasını tutmaktadır.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:report, caption=Kaynak rapor ise]
+@report{reportEtiket,
+	author 		= {R W Werner and O H Krikorin},
+	title 		= {Synfuels from Fusion Using The Tandem Mirror Reactor and a Thermochemical Cycle to Produce Hydrogen},
+	institution  = {Livermore National Laboratory},
+	year         = 1982,
+	number       = {UCID-19311},
+	pages		 = {120-150}
+}
+\end{lstlisting}
+
+\subsection{Kaynak: Web Sayfası}
+
+Kaynak web sayfası ise "title" yayın adını, "address" yayımlandığı yeri, "url" web adresini, "eventdate" giriş yapılan tarihi tutmaktadır. Eğer yazar yok ise sadece "url" ve "eventdate" alanları gerekmektedir. Ayrıca yazarsız atıf işlemi "$\backslash$nocite" komutu ile yapılır. Yazı içerisinde link olmasada sonda bulunan kaynakçada adres gösterilir.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:web, caption=Kaynak web sayfası ise]
+@online{onlineEtiket,
+	author		= {R A Day},
+	title		= {Bilimsel Bir Makale Nasıl Yazılır ve Yayımlanır},
+	address 	= {Çeviri: Gülay Aşkar Altay, Tubitak},
+	url			= {http://journals.tubitak.gov.tr/kitap/maknasyaz/},
+	year		= {2012},
+	eventdate	= {2012-04-10}
+}
+@online{onlineYazarsiz,
+	url			= {http://journals.tubitak.gov.tr/kitap/maknasyaz/3},
+	eventdate	= {},
+}
+\end{lstlisting}
+
+\subsection{Kaynak: Patent}
+
+Kaynak patent ise "title" buluş adını, "number" patent numarasını ve "holder" patent yerini tutmaktadır. "holder" alanını iki kıvrımlı parantez \{\{\}\} ile tanımlamak gerekmektedir. 
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:patent, caption=Kaynak patent ise]
+@patent{patent,
+	author       = {K H Kavur},
+	title        = {Heart Flowerpot},
+	year		 = {2006},
+	number       = {U.S. Patent No. D518,755.},
+	holder       = {{U.S. Patent and Trademark Office}}	
+}
+\end{lstlisting}
+
+\subsection{Kaynak: Standart}
+
+Kaynak standart ise "author" standartı hazırlayan kurumu, "title" standartın adını ve "address" bulunduğu şehri tutmaktadır. Dikkat edilmesi gereken husus eğer parantez içinde tüm kurum ismi geçecek ise (eğer geçmez ise sadece son kelimesini "soyad" olarak kabul etmektedir) "author" alanı \{\{\}\} içerisinde tanımlanmalıdır.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:standart, caption=Kaynak standart ise]
+@misc{standard,
+	author		= {{Türk Standartları Enstitüsü}},
+	year		= {1976},
+	title		= {Odunun Statik Eğilmede Elastikiyet Modülün Tayini},
+	number 		= {TS 2478},
+	address     = {Ankara}
+}
+\end{lstlisting}
+
+\subsection{Kaynak: Kanun, Yönetmelik ya da Resmi Gazete}
+
+Kaynak kanun, yönetmelik ya da resmi gazete ise "publisher" kurum adını, "title" başlığını, "number" sayı ve tarihini tutmaktadır.
+
+\begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:kanun, caption={Kaynak kanun, yönetmelik ya da resmi gazete ise}]
+@manual{manual,
+	publisher   = {{ÇŞB (T.C. Çevre ve Şehircilik Bakanlığı)}},
+	title 		= {Bina Yalıtım Yönetmeliği},
+	year		= {2008},
+	address		= {T.C Resmi Gazete},
+	number		= {27019, 9 Ekim 2008},	
+}
+\end{lstlisting}
+
+
+\chapter{Özgeçmiş / Kişisel Yayın ve Eser Bölümleri }
+\label{ch:ozgec}
+Özgeçmiş sayfası standart birinci dereceden başlık komutu ile yani "$\backslash$chapter*\{\}" ile başlıklandırılmalıdır. Komut içerisinde ki "*" başlığın numaralandırılmasını önler böylece numarasız şekilde yazılmakla beraber içindekiler listesine de numarasız şekilde eklenmektedir.
+
+Kişisel yayın ve eser bölümünde ise kaynaklar bölümüne eklenmeyen fakat kaynaklar bölümünde istenilen formata uygun şekilde kaynak basımı gerekmektedir. Bunun için ".bib" dosyasına yazar ilgili kaynağı önceki bölümde anlatılan şekilde ekledikten sonra ayrıca "author+an = \{1=highlight\}," alanı da eklenmelidir. Bu alanda kılavuzda istenilen "Kişisel yayın ve eserlerin yazımı kaynakların yazım kurallarına uygun olmalıdır. Ek olarak tez/proje yazarının adı kalın olarak yazılmalıdır." şartını sağlayan yazarın ilgili "author" bölümündeki sırasını yazarak o yazarın adı kalınlaştırılmaktadır.
+
+
