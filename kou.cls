@@ -65,6 +65,7 @@
 				maxcitenames=2,
 				backend=biber, 
 				giveninits,
+				uniquelist=false,
 				uniquename=false,
 				eventdate=comp,
 				sorting=anyt]{biblatex}
@@ -674,8 +675,8 @@
 % YAYIMLAMA VE FİKRİ MÜLKİYET HAKLARI
 \newcommand\fikriolustur
 {
-	\cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{YAYIMLAMA VE FİKRİ MÜLKİYET HAKLARI}
-	\centerline{\bfseries\MakeUppercase{YAYIMLAMA VE FİKRİ MÜLKİYET HAKLARI}}
+	\cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{Yayımlama ve Fikri Mülkiyet Hakları}
+	\centerline{\bfseries\MakeUppercase{Yayımlama ve Fikri Mülkiyet Hakları}}
 	Fen Bilimleri Enstitüsü tarafından onaylanan lisansüstü tezimin/projemin tamamını
 	veya herhangi bir kısmını, basılı ve elektronik formatta arşivleme ve aşağıda belirtilen
 	koşullarla kullanıma açma izninin Kocaeli Üniversitesi’ne verdiğimi beyan ederim. Bu
@@ -733,7 +734,7 @@
 	\textbf{\MakeUppercase{Abstract}}
 	
 	\abst
-	
+
 	\textbf{Keywords: }\keywrd
 }
 
