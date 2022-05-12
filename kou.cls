@@ -103,6 +103,7 @@
 \RequirePackage[perpage]{footmisc}
 \RequirePackage{framed}
 \RequirePackage[pdfusetitle, linktoc=all]{hyperref}
+\RequirePackage[numbered,depth=subsection]{bookmark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Kişisel yayın ve eser bölümünde kullanılacak komut oluşturulması
