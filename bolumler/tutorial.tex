@@ -10,7 +10,7 @@ Tez yazımının daha rahat yönetilebilmesi için "tez.tex" adlı ana dosya olu
 
 "$\backslash$documentclass[msc]\{kou\}" komutu oluşturulan "kou.cls" adlı sınıfın yüklendiği komuttur. "tez.tex" dosyası ile aynı klasör içerisinde bulunması gerekmektedir. "[msc]" opsiyonel bir girdi olup dosyanın türünü belirtmektedir. Eğer dosya yüksek lisans tezi ise "msc", doktora tezi ise "phd" yazılabilmektedir. Eğer boş bırakılırsa dosya türü proje olarak belirlenmektedir.
 
-"$\backslash$addbibresource\{x.bib\}" komutu tezde kullanılan kaynakların yönetiminin sağlandığı sistem için gerekli olan dosyayı belirtmektedir. Bölüm \ref{ch:ref} içerisinde "x.bib"'te neler olması gerektiği ve nasıl kullanılması gerektiği anlatılmıştır. Dosya adı yazar tarafından belirlenebilmektedir ve bu çalışmada "kaynaklar.bib" adlı dosya kullanılmıştır.
+"$\backslash$addbibresource\{x.bib\}" komutu tezde kullanılan kaynakların yönetiminin sağlandığı sistem için gerekli olan dosyayı belirtmektedir. Bölüm \ref{ch:ref} içerisinde "x.bib"'te neler olması gerektiği ve nasıl kullanılması gerektiği anlatılmıştır. Dosya adı yazar tarafından belirlenebilmektedir ve bu çalışmada "kaynaklar.bib" ve "kisisel.bib" adlı dosyalar kullanılmıştır.
 
 "$\backslash$baslik\{\}" komutu tezin başlığının tanımlandığı komuttur. 
 
@@ -536,6 +536,8 @@ Kaynak kanun, yönetmelik ya da resmi gazete ise "publisher" kurum adını, "tit
 \label{ch:ozgec}
 Özgeçmiş sayfası standart birinci dereceden başlık komutu ile yani "$\backslash$chapter*\{\}" ile başlıklandırılmalıdır. Komut içerisinde ki "*" başlığın numaralandırılmasını önler böylece numarasız şekilde yazılmakla beraber içindekiler listesine de numarasız şekilde eklenmektedir.
 
-Kişisel yayın ve eser bölümünde ise kaynaklar bölümüne eklenmeyen fakat kaynaklar bölümünde istenilen formata uygun şekilde kaynak basımı gerekmektedir. Bunun için ".bib" dosyasına yazar ilgili kaynağı önceki bölümde anlatılan şekilde ekledikten sonra ayrıca "author+an = \{1=highlight\}," alanı da eklenmelidir. Bu alanda kılavuzda istenilen "Kişisel yayın ve eserlerin yazımı kaynakların yazım kurallarına uygun olmalıdır. Ek olarak tez/proje yazarının adı kalın olarak yazılmalıdır." şartını sağlayan yazarın ilgili "author" bölümündeki sırasını yazarak o yazarın adı kalınlaştırılmaktadır.
+Kişisel yayın ve eser bölümünde ise kaynaklar bölümüne eklenmeyen fakat kaynaklar bölümünde istenilen formata uygun şekilde kaynak basımı gerekmektedir. Bunun için "kisisel.bib" dosyasına yazar ilgili kaynağı önceki bölümde anlatılan şekilde ekledikten sonra ayrıca "author+an = \{1=highlight\}," alanı da eklenmelidir. "$\backslash$kisiselcite{}" komutuyla eser eklenebilmektedir. Bu alanda kılavuzda istenilen "Kişisel yayın ve eserlerin yazımı kaynakların yazım kurallarına uygun olmalıdır. Ek olarak tez/proje yazarının adı kalın olarak yazılmalıdır." şartını sağlayan yazarın ilgili "author" bölümündeki sırasını yazarak o yazarın adı kalınlaştırılmaktadır.
+
+Burada dikkat edilmesi gereken husus iki ayrı ".bib" dosyasının olmasıdır. Eğer yazar, kişisel yayın ve eser bölümünde bahsi geçen eseri aynı zamanda yazı içerisinde de atıflayacak ise, "author+an" alansız halini "kaynaklar.bib" adlı dosyaya da farklı etiket ile eklemelidir.
 
 

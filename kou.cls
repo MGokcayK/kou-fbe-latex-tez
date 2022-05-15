@@ -122,18 +122,28 @@
 \DeclareBibliographyCategory{nobibliography}
 
 % Kişisel eserin yazdırılacağı komut
-\newcommand{\kisiselcite}[1]{\hangindent=1cm\hangafter=1\addtocategory{nobibliography}{#1}\customfullcite{#1}}
+\newcommand{\kisiselcite}[1]{
+	\hangindent=1cm\hangafter=1
+	\customfullcite{#1}
+	\addtocategory{nobibliography}{#1}
+}
 
 % Tez/proje sahibinin ismini kalınlaştıran düzenleme
 \renewcommand*{\mkbibnamegiven}[1]{%
-	\ifitemannotation{highlight}
+	\ifcategory{nobibliography}
+	{\ifitemannotation{highlight}
 	{\textbf{#1}}
 	{#1}}
+	{#1}
+}
 
 \renewcommand*{\mkbibnamefamily}[1]{%
-	\ifitemannotation{highlight}
-	{\textbf{#1}}
-	{#1}}
+	\ifcategory{nobibliography}
+	{\ifitemannotation{highlight}
+		{\textbf{#1}}
+		{#1}}
+	{#1}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Algoritmanın sayfalar arasında bölünebilmesi için yeni ortam oluşturma
