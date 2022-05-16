@@ -110,23 +110,19 @@
 
 % Yeni fullcite komutu
 \DeclareCiteCommand{\customfullcite}
-{}%
-{\usedriver
-	{\DeclareNameAlias{sortname}{default}}
-	{\thefield{entrytype}}
-	}
+{}
+{\usedriver{\DeclareNameAlias{sortname}{default}\defcounter{maxnames}{99}}
+	{\thefield{entrytype}}}
 {\multicitedelim}
 {}
+
+
 
 % Bibliography'e eklenmeyen kategori oluşturulması
 \DeclareBibliographyCategory{nobibliography}
 
 % Kişisel eserin yazdırılacağı komut
-\newcommand{\kisiselcite}[1]{
-	\hangindent=1cm\hangafter=1
-	\customfullcite{#1}
-	\addtocategory{nobibliography}{#1}
-}
+\newcommand{\kisiselcite}[1]{\hangindent=1cm\hangafter=1\customfullcite{#1}\addtocategory{nobibliography}{#1}}
 
 % Tez/proje sahibinin ismini kalınlaştıran düzenleme
 \renewcommand*{\mkbibnamegiven}[1]{%
