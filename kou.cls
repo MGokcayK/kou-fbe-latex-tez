@@ -607,11 +607,12 @@
 			\centering
 			\ifphd
 			\MakeUppercase{DOKTORA TEZİ}
-			\fi
-			\ifmsc
-			\MakeUppercase{YÜKSEK LİSANS TEZİ}
 			\else
-			\MakeUppercase{PROJE}
+				\ifmsc
+				\MakeUppercase{YÜKSEK LİSANS TEZİ}
+				\else
+				\MakeUppercase{PROJE}
+				\fi
 			\fi
 		\end{minipage} 	
 		\begin{minipage}[t][4.3cm][t]{\textwidth}
