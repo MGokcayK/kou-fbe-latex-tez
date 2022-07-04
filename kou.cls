@@ -68,6 +68,7 @@
 				uniquelist=false,
 				uniquename=false,
 				eventdate=comp,
+				dateabbrev=false,
 				sorting=anyt]{biblatex}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
@@ -82,11 +83,13 @@
 \RequirePackage{array}
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
-\RequirePackage[format=plain,justification=raggedright, margin=0em]{caption}
+\RequirePackage[format=plain, margin=0em]{caption}
 \RequirePackage[fleqn]{amsmath}
 \RequirePackage{amssymb}
+\RequirePackage{nccmath}
 \RequirePackage{color}
 \RequirePackage{txfonts}
+\RequirePackage{mathptmx}
 \RequirePackage{siunitx}
 \RequirePackage{subcaption}
 \RequirePackage{tikz}
@@ -104,6 +107,7 @@
 \RequirePackage{framed}
 \RequirePackage[pdfusetitle, linktoc=all]{hyperref}
 \RequirePackage[numbered,depth=subsection]{bookmark}
+\RequirePackage{xfrac}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Kişisel yayın ve eser bölümünde kullanılacak komut oluşturulması
@@ -167,7 +171,6 @@
 \makeatother
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Yeni maddelendirme tanımlamaları. 
 
@@ -177,13 +180,14 @@
 \newlist{simge}{enumerate}{4}
 \setlist[simge]{label=\arabic*., leftmargin=3cm,align=simgeAlign,
 	before=\setlength{\baselineskip}{0pt},
-	labelsep=*,labelwidth=*, nosep, topsep=0pt,itemsep=2pt}
+	labelsep=*,labelwidth=*, nosep, topsep=0pt, itemsep=2pt, after=\vspace{12pt}}
 
 % "maddelendir" ortamı standart "itemize" a benzer fakat ufak düzenlemeler
 % içerir.
+\newcommand{\gmadskip}{0.5\parskip}
 \newlist{maddelendir}{enumerate}{4}
-\setlist[maddelendir]{label=\arabic*.,noitemsep,leftmargin=1cm,align=left,
-	labelsep=*,labelwidth=*,topsep=0pt}
+\setlist[maddelendir]{label=\arabic*.,itemsep=\gmadskip,leftmargin=1cm,align=left,labelsep=*,labelwidth=*,
+	topsep=0pt,before=\setlength{\baselineskip}{0pt},after=\vspace{-12pt}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -199,7 +203,7 @@
 %\renewcommand{\listtablename}{Tablolar Dizini}
 %\renewcommand{\contentsname}{Yeni }
 %\renewcommand{\listfigurename}{My nice list of figures}
-%\renewcommand{\figurename}{?ekil}
+%\renewcommand{\figurename}{Şekil}
 %\renewcommand{\lstlistingname}{ekil}
 %\renewcommand{\tablename}{Tablo}
 %\addto\captionsturkish{% Replace "english" with the language you use
@@ -207,6 +211,10 @@
 	%	{sea}%
 	%}
 %\renewcommand{\algorithmicrequire}{\textbf{Gerekli:}}
+
+% Açıklama numarasından ":" silinmesi.
+\DeclareCaptionLabelSeparator{none}{ }
+\captionsetup{labelsep=none}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Linklerin çevresinde oluşan kırmızı kutunun renksizleştirilmesi.
@@ -298,32 +306,40 @@
 % Sayfa numaralandırmasının düzenlenmesi.
 \pagestyle{plain}
 
-% Paragraf arasarasının 12 nokta (punto) yapılması.
+% Paragraf arasırasının 12 nokta (punto) yapılması.
 \setlength{\parindent}{0em}
 \setlength{\parskip}{12pt}
 
 % Satır arasının 1.5 yapılması
 \setstretch{1.5}
-%\captionsetup*[table]{}    
-%\captionsetup[figure]{}  
-\setlength{\intextsep}{\baselineskip}
+\setlength{\intextsep}{12pt}
 \setlength{\textfloatsep}{\baselineskip}
 \setlength{\FrameSep}{0pt}
 \setlength{\fboxsep}{0pt}
-%\AfterEndEnvironment{figure}{\vskip-\baselineskip}
-%\AfterEndEnvironment{table}{\vskip-\baselineskip}
 
 % Tablo ve Şekil etiketlerinin sonuna nokta konulması
 \renewcommand{\thetable}{\thechapter.\arabic{table}.}
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}.}
 
 % Denklemlerin sol tarafa yaklaştırılması
-\setlength{\mathindent}{0pt}
-\setlength{\abovedisplayskip}{0pt}
-\setlength{\belowdisplayskip}{0pt}
-\setlength{\abovedisplayshortskip}{0pt}
-\setlength{\belowdisplayshortskip}{0pt}
-\allowdisplaybreaks
+% Denklem öncesi ve sonrası boşlukların ayarlanması
+\makeatletter
+\g@addto@macro\normalsize{%
+	\setlength{\jot}{12pt}% çok satırlı denklemlerde her denklem arasını 12pt ayarlamak (1.5pt offset kendiliğinden bulunmakta).
+	\allowdisplaybreaks[4]% çok satırlı denklemlerin iki sayfa arasında olduğunda bölünmesine izin verme.
+	\setlength{\mathindent}{0pt}% denklemlerin sol taraftan girdilerinin ayarlanması.
+	\abovedisplayskip 12\p@ \@plus3\p@ \@minus6\p@ % denklemlerin denklem öncesi yüksekliğinin 12pt ye geçirilmesi
+	\belowdisplayskip 12\p@ \@plus3\p@ \@minus6\p@ % denklemlerin denklem sonrası yüksekliğinin 12pt ye geçirilmesi
+	\abovedisplayshortskip 12\p@ \@plus3\p@ \@minus6\p@
+	\belowdisplayshortskip 12\p@ \@plus3\p@ \@minus6\p@
+}
+\makeatother
+\everydisplay\expandafter{%
+	\the\everydisplay
+	\renewcommand{\baselinestretch}{1}\selectfont
+	\baselineskip=0pt
+	\lineskip=0pt
+}
 
 % Bölüm ve içerik sayacının derinliğinin ayarlanması.
 \setcounter{secnumdepth}{4}
@@ -368,13 +384,13 @@
 
 % Birinci derece bölüm başlığının düzenlenmesi.
 \titleformat{\chapter}
-{\bfseries\large}
+{\normalfont\bfseries}
 {}
 {0pt}
 {\thechapter.~\MakeUppercase{#1}}
 
 \titleformat{name=\chapter,numberless}
-{\bfseries\large}
+{\normalfont\bfseries}
 {}
 {0pt}
 {\addcontentsline{toc}{chapter}{#1}\MakeUppercase{#1}}
@@ -393,7 +409,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{section}{#1}#1}
-\titlespacing{\section}{0pt}{0pt}{0pt}
+\titlespacing{\section}{0pt}{0pt}{-9.75pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Üçüncü derece bölüm başlığının düzenlenmesi.
@@ -408,7 +424,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{subsection}{#1}#1}
-\titlespacing{\subsection}{0pt}{0pt}{0pt}
+\titlespacing{\subsection}{0pt}{0pt}{-9.75pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dördüncü derece bölüm başlığının düzenlenmesi. 
@@ -423,7 +439,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{subsubsection}{#1}#1}
-\titlespacing{\subsubsection}{0pt}{0pt}{0pt}
+\titlespacing{\subsubsection}{0pt}{0pt}{-9.75pt}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -541,40 +557,45 @@
 % Kapak sayfası tanımımlanması.
 \newcommand\kapakolustur
 {
+	\clearpage
 	\begin{titlepage}
 		\centering
 		\bfseries
 		\fontsize{14}{16.8}\selectfont
-		\begin{minipage}[t][3.5cm][t]{\textwidth}
-			\centering
-			KOCAELİ ÜNİVERSİTESİ \\ FEN BİLİMLERİ ENSTİTÜSÜ 
-		\end{minipage} 		
-		\begin{minipage}[t][3.5cm][t]{\textwidth}
-			\centering
-			\MakeUppercase{\dept}	
-		\end{minipage} 
-		\begin{minipage}[t][4.0cm][t]{\textwidth}
-			\centering
-			\ifphd
-			\MakeUppercase{DOKTORA TEZİ}
-			\else
-				\ifmsc
-				\MakeUppercase{YÜKSEK LİSANS TEZİ}
+		\hfill\begin{minipage}[t]{\textwidth-1.5cm}
+			\begin{minipage}[t][3.5cm][t]{\linewidth}
+				\centering
+				KOCAELİ ÜNİVERSİTESİ \\ FEN BİLİMLERİ ENSTİTÜSÜ 
+			\end{minipage} 		
+			\begin{minipage}[t][3.5cm][t]{\linewidth}
+				\centering
+				\MakeUppercase{\dept} \\ ANABİLİM DALI	
+			\end{minipage} 
+			\begin{minipage}[t][4.0cm][t]{\linewidth}
+				\centering
+				\ifphd
+				\MakeUppercase{DOKTORA TEZİ}
 				\else
-				\MakeUppercase{PROJE}
+					\ifmsc
+					\MakeUppercase{YÜKSEK LİSANS TEZİ}
+					\else
+					\MakeUppercase{PROJE}
+					\fi
 				\fi
-			\fi
-		\end{minipage} 		
-		\begin{minipage}[t][6.0cm][t]{\textwidth}
-			\centering
-			\MakeUppercase{\titl}
-		\end{minipage} 
-		\begin{minipage}[t][2.0cm][t]{\textwidth}
-			\centering
-			\MakeUppercase{\auth}
-		\end{minipage} 
-		\vfill
-		\vbox{\MakeUppercase{Kocaeli}~\trhY}
+			\end{minipage} 		
+			\begin{minipage}[t][6.4cm][t]{\linewidth}
+				\centering
+				\MakeUppercase{\titl}
+			\end{minipage} 
+			\begin{minipage}[t][2.0cm][t]{\linewidth}
+				\centering
+				\MakeUppercase{\auth}
+			\end{minipage} 
+			\begin{minipage}[t][4.33cm][t]{\linewidth}
+				\vfill\centering
+				\MakeUppercase{Kocaeli}~\trhY
+			\end{minipage} 
+		\end{minipage}
 	\end{titlepage}
 }
 
@@ -583,10 +604,8 @@
 % Onay sayfası ortamı oluşturulması.
 \newenvironment{onaysayf}
 {
-	\clearpage
-	\thispagestyle{empty}% we want this page to be empty (adjust to use a modified page style)
-	\setlength{\parskip}{0pt}
-	\centering
+	\cleardoublepage
+	\thispagestyle{empty}
 	\bfseries
 	\fontsize{14}{16.8}\selectfont
 }
@@ -595,66 +614,75 @@
 \newcommand\onayolustur
 {
 	\begin{onaysayf}
-		\begin{minipage}[t][2.50cm][t]{\textwidth}
-			\centering
-			KOCAELİ ÜNİVERSİTESİ \\ FEN BİLİMLERİ ENSTİTÜSÜ 
-		\end{minipage} 	
-		\begin{minipage}[t][2.50cm][t]{\textwidth}
-			\centering
-			\MakeUppercase{\dept}	
-		\end{minipage} 	
-		\begin{minipage}[t][2.50cm][t]{\textwidth}
-			\centering
-			\ifphd
-			\MakeUppercase{DOKTORA TEZİ}
-			\else
-				\ifmsc
-				\MakeUppercase{YÜKSEK LİSANS TEZİ}
-				\else
-				\MakeUppercase{PROJE}
-				\fi
-			\fi
-		\end{minipage} 	
-		\begin{minipage}[t][4.3cm][t]{\textwidth}
-			\centering
-			\MakeUppercase{\titl}
-		\end{minipage} 	
-		\begin{minipage}[t][4.0cm][t]{\textwidth}
-			\centering
-			\MakeUppercase{\auth}
-		\end{minipage} 
-		\begin{minipage}[t][6.5cm][t]{0.773\textwidth}
-			\fontsize{12}{0}\selectfont
-			\setlength{\parskip}{4pt}
-			\jr \\
-			\jrd  
-			
-			\jrS \\
-			\jrdS
-			
-			\jrT \\
-			\jrdT
-			
-			\jrF \\
-			\jrdF
-			
-			\jrFT \\
-			\jrdFT
-			\vfill
-
-		\end{minipage} 
-		\begin{minipage}[t][1.0cm][t]{\textwidth}
-		\centering
-		\fontsize{12}{0}\selectfont
-		Tezin Savunulduğu Tarih: \MakeUppercase{\strh}
-	\end{minipage} 
+		\hfill\begin{minipage}[t]{\textwidth-1.1cm}
+			\hfill\begin{minipage}[t]{\linewidth-1.0cm}
+					\begin{minipage}[t][2.50cm][t]{\linewidth}
+						\centering
+						KOCAELİ ÜNİVERSİTESİ \\ FEN BİLİMLERİ ENSTİTÜSÜ 
+					\end{minipage}
+					\begin{minipage}[t][2.6cm][t]{\linewidth}
+						\centering
+						\MakeUppercase{\dept} \\ ANABİLİM DALI
+					\end{minipage}
+					\begin{minipage}[t][2.65cm][t]{\linewidth}
+						\centering
+						\ifphd
+						\MakeUppercase{DOKTORA TEZİ}
+						\else
+						\ifmsc
+						\MakeUppercase{YÜKSEK LİSANS TEZİ}
+						\else
+						\MakeUppercase{PROJE}
+						\fi
+						\fi
+					\end{minipage}
+					\begin{minipage}[t][4.3cm][t]{\linewidth}
+						\centering
+						\MakeUppercase{\titl}
+					\end{minipage}
+					\begin{minipage}[t][4.20cm][t]{\linewidth}
+						\centering
+						\MakeUppercase{\auth}
+					\end{minipage}
+				\end{minipage}
+				\begin{minipage}[t][7.0cm][t]{\linewidth}
+					\fontsize{12}{0}\selectfont
+					\setlength{\parskip}{6pt}
+					\vfill
+					\jr \\
+					\jrd  					
+					
+					\jrS \\
+					\jrdS					
+					
+					\jrT \\
+					\jrdT					
+					
+					\jrF \\
+					\jrdF
+										
+					\jrFT \\
+					\jrdFT
+					\if\jrBES\hfill
+						\vspace{0.0cm}
+					\else
+						\vspace{0.7cm}
+					\fi
+				\end{minipage}			
+				\begin{minipage}{\linewidth}
+					\centering
+					\fontsize{12}{14.5}\selectfont
+					\hspace{1.0cm}Tezin Savunulduğu Tarih: \MakeUppercase{\strh}
+				\end{minipage} 
+		\end{minipage}	
 	\end{onaysayf}
 }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Etik Beyan ve Araştırma Fonu Desteği Sayfası
-\newcommand\etikolustur
+\newcommand{\gCheck}{\Large\checkmark}
+\NewDocumentCommand{\etikolustur}{ O{1} O{................................} O{................................}}
 {
 	\cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{Etik Beyan ve Araştırma Fonu Desteği}
 	\centerline{\bfseries\MakeUppercase{Etik Beyan ve Araştırma Fonu Desteği}}
@@ -669,19 +697,24 @@
 	\end{maddelendir}
 	beyan ederim.
 	
-	\framebox[0.5cm][t]{\rule{0pt}{0.5\baselineskip}}~Bu tez/proje çalışmasının herhangi bir aşaması hiçbir kurum/kuruluş tarafından maddi/alt yapı desteği ile desteklenmemiştir.
+	\makebox[0pt][l]{\framebox[0.5cm][t]{\rule{0pt}{0.6\baselineskip}}}\raisebox{.15ex}{\hspace{0.05cm}\ifnum#1<2$\gCheck$\else\hspace{0.45cm}\fi}~Bu tez/proje çalışmasının herhangi bir aşaması hiçbir kurum/kuruluş tarafından maddi/alt yapı desteği ile desteklenmemiştir.
 	
-	\framebox[0.5cm][t]{\rule{0pt}{0.5\baselineskip}}~Bu tez/proje çalışması kapsamında üretilen veri ve bilgiler ................................ tarafından ................................ no'lu proje kapsamında maddi/alt yapı desteği alınarak gerçekleştirilmiştir.
+	\makebox[0pt][l]{\framebox[0.5cm][t]{\rule{0pt}{0.6\baselineskip}}}\raisebox{.15ex}{\hspace{0.05cm}\ifnum#1>1$\gCheck$\else\hspace{0.45cm}\fi}~Bu tez/proje çalışması kapsamında üretilen veri ve bilgiler #2 tarafından #3 no'lu proje kapsamında maddi/alt yapı desteği alınarak gerçekleştirilmiştir.
 	
 	Herhangi bir zamanda, çalışmamla ilgili yaptığım bu beyana aykırı bir durumun saptanması durumunda, ortaya çıkacak tüm ahlaki ve hukuki sonuçları kabul ettiğimi bildiririm.
 	
-	\hfill\mbox{\parbox{4.2cm}{\centering............................\\(İmza)\\........................................ \\(Öğrencinin Adı Soyadı)}}
+	\hfill\begin{tabular}{@{}c@{}}
+		............................\\
+		(İmza)\\
+		\auth\\
+		(Öğrencinin Adı Soyadı)
+	\end{tabular}
 }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % YAYIMLAMA VE FİKRİ MÜLKİYET HAKLARI
-\newcommand\fikriolustur
+\NewDocumentCommand{\fikriolustur}{O{3}}
 {
 	\cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{Yayımlama ve Fikri Mülkiyet Hakları}
 	\centerline{\bfseries\MakeUppercase{Yayımlama ve Fikri Mülkiyet Hakları}}
@@ -701,11 +734,16 @@
 	aşağıda belirtilen koşullar haricinde YÖK Ulusal Tez Merkezi/ Kocaeli Üniversitesi
 	Kütüphaneleri Açık Erişim Sisteminde erişime açılır. 
 	
-	\framebox[0.5cm][t]{\rule{0pt}{0.5\baselineskip}} Enstitü yönetim kurulu kararı ile tezimin/projemin erişime açılması mezuniyet tarihinden itibaren 2 yıl ertelenmiştir. \\	
-	\framebox[0.5cm][t]{\rule{0pt}{0.5\baselineskip}} Enstitü yönetim kurulu gerekçeli kararı ile tezimin/projemin erişime açılması mezuniyet tarihinden itibaren 6 ay ertelenmiştir. \\
-	\framebox[0.5cm][t]{\rule{0pt}{0.5\baselineskip}} Tezim/projem ile ilgili gizlilik kararı verilmemiştir.
+	\makebox[0pt][l]{\framebox[0.5cm][t]{\rule{0pt}{0.6\baselineskip}}}\raisebox{.15ex}{\hspace{0.05cm}\ifnum#1=1$\gCheck$\else\hspace{0.45cm}\fi}~Enstitü yönetim kurulu kararı ile tezimin/projemin erişime açılması mezuniyet tarihinden itibaren 2 yıl ertelenmiştir. \\	
+	\makebox[0pt][l]{\framebox[0.5cm][t]{\rule{0pt}{0.6\baselineskip}}}\raisebox{.15ex}{\hspace{0.05cm}\ifnum#1=2$\gCheck$\else\hspace{0.45cm}\fi}~Enstitü yönetim kurulu gerekçeli kararı ile tezimin/projemin erişime açılması mezuniyet tarihinden itibaren 6 ay ertelenmiştir. \\
+	\makebox[0pt][l]{\framebox[0.5cm][t]{\rule{0pt}{0.6\baselineskip}}}\raisebox{.15ex}{\hspace{0.05cm}\ifnum#1=3$\gCheck$\else\hspace{0.45cm}\fi}~Tezim/projem ile ilgili gizlilik kararı verilmemiştir.
 	
-	\hfill\mbox{\parbox{4.2cm}{\centering............................\\(İmza)\\........................................ \\(Öğrencinin Adı Soyadı)}}
+	\hfill\begin{tabular}{@{}c@{}}
+		............................\\
+		(İmza)\\
+		\auth\\
+		(Öğrencinin Adı Soyadı)
+	\end{tabular}
 }
 
 
@@ -854,7 +892,7 @@
 % Dergi cilt numarasının italik olarak düzenlenmesi.
 \DeclareFieldFormat[article]{volume}{\textit{#1}\nopunct}
 % Dergi başlığının italik olarak düzenlenmesi.
-\DeclareFieldFormat[article]{journaltitle}{\textit{#1},}
+\DeclareFieldFormat[article]{journaltitle}{\textit{#1}}
 % Dergi sayı numarasının düzenlenmesi.
 \DeclareFieldFormat[article]{number}{(#1)}
 % Dergi sayfa numarasının düzenlenmesi.
@@ -872,11 +910,15 @@
 	\usebibmacro{title}%
 	\setunit{\addperiod\space}%
 	\printfield{journaltitle}%
-	\addcomma\addspace%
-	\printfield{volume}%	
-	\printfield{number}%
-	\addcomma\addspace%
-	\printfield{pages}%
+	\iffieldundef{volume}%
+	{}
+	{\addcomma\addspace\printfield{volume}}		
+	\iffieldundef{number}%
+	{}
+	{\addcomma\addspace\printfield{number}}	
+	\iffieldundef{pages}%
+	{}
+	{\addcomma\addspace\printfield{pages}}	
 	\addperiod%
 	\addspace%
 	\iffieldundef{doi}%
@@ -1086,7 +1128,7 @@
 	{}%
 	{\printfield{url}}%
 	\addspace%
-	\printtext{(Ziyaret Tarihi:\printeventdate)\@}%
+	\printtext{(Ziyaret Tarihi:~\printeventdate)\@}%
 	\addperiod%
 }
 

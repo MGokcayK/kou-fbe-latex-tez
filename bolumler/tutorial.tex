@@ -18,7 +18,7 @@ Tez yazımının daha rahat yönetilebilmesi için "tez.tex" adlı ana dosya olu
 
 "$\backslash$yazar\{\}" komutu tezin yazarının belirlendiği komuttur. Bu komut içerisinde yazar soyadının büyük yazılması gerekmektedir.
 
-"$\backslash$bolum\{\}" yazarın bulunduğu anabilim dalının belirlendiği komuttur. 
+"$\backslash$bolum\{\}" yazarın bulunduğu anabilim dalının belirlendiği komuttur. "ANABİLİM DALI" ifadesi sistem tarafından eklenmektedir. 
 
 "$\backslash$tarihAY\{\}" "$\backslash$tarihYIL\{\}" tezin yayımlandığı ay ve yıl tarihleridir.
 
@@ -40,7 +40,7 @@ Tez yazım kılavuzu içerisinde bazı bölümlerin 1 satır boşluklu, bazı b�
 
 Metin içerisinde geçen şekil, tablo açıklamaları, alıntı ve dip not yazımında grup olmaksızın 1 satır aralığı kullanılmaktadır. 
 
-"$\backslash$etikolustur" etik beyan ve araştırma fonu desteği sayfasını ve "$\backslash$fikriolustur" yayımlama ve fikri mülkiyet hakları sayfasını oluşturmaktadır. 
+"$\backslash$etikolustur" etik beyan ve araştırma fonu desteği sayfasını ve "$\backslash$fikriolustur" yayımlama ve fikri mülkiyet hakları sayfasını oluşturmaktadır. Her iki sayfada da işaretlenmesi gereken maddeler bulunmaktadır. Bu maddeler örnek olarak "$\backslash$etikolustur[madde no]" formatıyla seçilebilir. Seçilen maddeye sistem tik işareti bırakmakatadır. Etik sayfasının ikinci maddesinde oluşan boşlukların doldurulmasıda "$\backslash$etikolustur[madde no][birinci boşluk][ikinci boşluk]" formatında tanımlanmıştır. Eğer hiçbir tanımlama yapılmamış ise ("$\backslash$etikolustur" gibi) etik sayfasında 1.madde ve fikri mülkiyet hakkı sayfasında 3.madde seçili halde gelmektedir.
 
 "$\backslash$input\{a.tex\}" komutu "a.tex" adlı dosyanın eklenmesini sağlayan temel latex komutudur. Bu komut sayesinde yazar yazıyı istediği kadar parçaya ayırarak yazabilir ve ana dosya içerisine bu komut ile ekleyebilir. 
 
@@ -78,6 +78,7 @@ Sayfa numaralandırmaları "tez.tex" dosyası içerisinde kılavuza uygun olarak
 
 \chapter{Tablo, Şekil ve Kod Parçaları}
 Tablo, şekil ve kod parçaları kılavuzda belirlenen kurallar üzerinden numaralandırılmaktadır. Bu kurallarda kod parçalarının isimlendirilmesi "Şekil" olarak geçmekte ve numaralandırılması da şekiller ile beraber yapılması belirtilmektedir. 
+
 
 \section{Tablo Oluşturma}
 Tablo, oluşturma standart "table" ve "tabular" ortamlarıyla oluşturulabilir. Bu ortamların nasıl kullanılacağı bu dökümanda anlatılmamıştır. Tablo oluşturmada dikkat edilmesi gereken husus başlığın tablonun üstüne gelmesidir. Bunun için "tabular" ortamından önce "$\backslash$caption\{\}" komutu kullanılmalıdır. Eğer bu komut "tabular" ortamından sonra kullanılıyor olsaydı başlık tablonun altında kalacaktı. Tablo ile yazı arasında kalan boşluklar istenildiği şekilde ayarlanmıştır. 
@@ -134,6 +135,7 @@ Tablo, oluşturma standart "table" ve "tabular" ortamlarıyla oluşturulabilir. 
 \end{figure}
 \end{lstlisting}
 
+Not: Şekiller dizininde atıf olmaması için "$\backslash$caption[Dizindeki Açıklama]\{Şekil altındaki açıklama\}" formunda yazılmalıdır.
 
 \section{Kod Parçası}
 Kod parçaları "lstlisting" ortamı ile oluşturulmaktadır. Stili "kou.cls" içerisinde tanımlanmışır. Yazar kod parçası için girmesi gereken üç adet bilgi bulunmaktadır.
@@ -212,6 +214,8 @@ Maddelendirme "maddelendir" ortamı üzerinden oluşturulmaktadır. "maddelendir
 	\item Madde üç.
 \end{maddelendir}
 \end{lstlisting}
+
+Not: Maddelendirme sonunda yeni bir paragrafa başlamadan direkt olarak 2. ve daha ileri dereceli başlık açılacak ise "$\backslash$leavevmode" komutunu "$\backslash$end\{maddelendir\}" komutunun sonrasına ekleyerek yeni başlık için uygun boşluk verilmesi sağlanmalıdır.
 
 
 \chapter{Algoritma}
