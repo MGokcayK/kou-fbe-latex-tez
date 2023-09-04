@@ -60,6 +60,7 @@
 \RequirePackage{silence}
 \WarningsOff[everypage]% 
 
+\RequirePackage[utf8]{inputenc}
 \RequirePackage[style=authoryear-icomp,
 				maxbibnames=99,
 				maxcitenames=2,
@@ -72,7 +73,6 @@
 				sorting=anyt]{biblatex}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
-\RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[style=english]{csquotes}
 \RequirePackage[main=turkish,english,shorthands=:!]{babel}
