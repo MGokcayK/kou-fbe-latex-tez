@@ -187,7 +187,7 @@
 \newcommand{\gmadskip}{0.5\parskip}
 \newlist{maddelendir}{enumerate}{4}
 \setlist[maddelendir]{label=\arabic*.,itemsep=\gmadskip,leftmargin=1cm,align=left,labelsep=*,labelwidth=*,
-	topsep=0pt,before=\setlength{\baselineskip}{0pt},after=\vspace{-12pt}}
+	topsep=0pt,after=\vspace{-12pt}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
