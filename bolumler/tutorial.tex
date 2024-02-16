@@ -323,6 +323,8 @@ Bu atıf cite* komutu içindir: \cite*{tekyazarArticle2}.
 Bu atıf citeauthor komutu içindir: \citeauthor{tekyazarArticle}.
 \subsection{$\backslash$citedate\{\} Komutu}
 Bu atıf citedate komutu içindir: \citedate{tekyazarArticle}.
+\subsection{$\backslash$citemanual\{\} Komutu}
+Bu atıf citemanual komutu içindir: \citemanual{manual}. Bu komut manual tipinde girilen kaynakçaların kılavuzda istenilen şekilde yazılmasını sağlamaktadır.
 \subsection{$\backslash$citetitle\{\} Komutu}
 Bu atıf citetitle komutu içindir: \citetitle{tekyazarArticle}.
 \subsection{$\backslash$citetitle*\{\} Komutu}
@@ -523,7 +525,7 @@ Kaynak standart ise "author" standartı hazırlayan kurumu, "title" standartın 
 
 \subsection{Kaynak: Kanun, Yönetmelik ya da Resmi Gazete}
 
-Kaynak kanun, yönetmelik ya da resmi gazete ise "publisher" kurum adını, "title" başlığını, "number" sayı ve tarihini tutmaktadır.
+Kaynak kanun, yönetmelik ya da resmi gazete ise "publisher" kurum adını, "title" başlığını, "number" sayı ve tarihini tutmaktadır. $\backslash$citemanual\{\} ile cite edilmesi gerekmektedir. Aksi taktirde başlık italik yazılacaktır.
 
 \begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:kanun, caption={Kaynak kanun, yönetmelik ya da resmi gazete ise}]
 @manual{manual,

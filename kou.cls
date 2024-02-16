@@ -184,11 +184,9 @@
 
 % "maddelendir" ortamı standart "itemize" a benzer fakat ufak düzenlemeler
 % içerir.
-\newcommand{\gmadskip}{0.5\parskip}
 \newlist{maddelendir}{enumerate}{4}
-\setlist[maddelendir]{label=\arabic*.,itemsep=\gmadskip,leftmargin=1cm,align=left,labelsep=*,labelwidth=*,
-	topsep=0pt,after=\vspace{-12pt}}
-
+\setlist[maddelendir]{label=\arabic*.leftmargin=1cm,align=left,labelsep=*,labelwidth=*,
+	itemsep=0pt, topsep=0pt, partopsep=0pt, parsep=0pt, before={\vspace{-\baselineskip + 12pt}}, after={\vspace{-\baselineskip + 12pt}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tanımlanan grafik dosyalarının uzantıları.
@@ -200,17 +198,7 @@
 \setlength{\@fptop}{0pt}
 \renewcommand{\ALG@name}{Algoritma}
 \makeatother
-%\renewcommand{\listtablename}{Tablolar Dizini}
-%\renewcommand{\contentsname}{Yeni }
-%\renewcommand{\listfigurename}{My nice list of figures}
-%\renewcommand{\figurename}{Şekil}
-%\renewcommand{\lstlistingname}{ekil}
-%\renewcommand{\tablename}{Tablo}
-%\addto\captionsturkish{% Replace "english" with the language you use
-	%	\renewcommand{\contentsname}%
-	%	{sea}%
-	%}
-%\renewcommand{\algorithmicrequire}{\textbf{Gerekli:}}
+\renewcommand{\algorithmicrequire}{\textbf{Gerekli:}}
 
 % Açıklama numarasından ":" silinmesi.
 \DeclareCaptionLabelSeparator{none}{ }
@@ -705,9 +693,9 @@
 	
 	\hfill\begin{tabular}{@{}c@{}}
 		............................\\
-		(İmza)\\
+		\\
 		\auth\\
-		(Öğrencinin Adı Soyadı)
+		
 	\end{tabular}
 }
 
@@ -740,9 +728,9 @@
 	
 	\hfill\begin{tabular}{@{}c@{}}
 		............................\\
-		(İmza)\\
+		\\
 		\auth\\
-		(Öğrencinin Adı Soyadı)
+		
 	\end{tabular}
 }
 
@@ -1197,7 +1185,12 @@
 	\addperiod%
 }
 
-
+% Manuel için cite komutu oluşturulması.
+\DeclareCiteCommand{\citemanual}
+{}%
+{\ifentrytype{manual}{\bibhyperref{\printfield{title}, \printfield{year}}}{}}%
+{\multicitedelim}%
+{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
