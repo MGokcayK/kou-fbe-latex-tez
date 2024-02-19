@@ -660,7 +660,15 @@
 				\begin{minipage}{\linewidth}
 					\centering
 					\fontsize{12}{14.5}\selectfont
+					\ifphd
 					\hspace{1.0cm}Tezin Savunulduğu Tarih: \MakeUppercase{\strh}
+					\else
+					\ifmsc
+					\hspace{1.0cm}Tezin Savunulduğu Tarih: \MakeUppercase{\strh}
+					\else
+					\hspace{1.0cm}Projenin Savunulduğu Tarih: \MakeUppercase{\strh}
+					\fi
+					\fi
 				\end{minipage} 
 		\end{minipage}	
 	\end{onaysayf}
