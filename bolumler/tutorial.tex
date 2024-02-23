@@ -81,7 +81,7 @@ Tablo, şekil ve kod parçaları kılavuzda belirlenen kurallar üzerinden numar
 
 
 \section{Tablo Oluşturma}
-Tablo, oluşturma standart "table" ve "tabular" ortamlarıyla oluşturulabilir. Bu ortamların nasıl kullanılacağı bu dökümanda anlatılmamıştır. Tablo oluşturmada dikkat edilmesi gereken husus başlığın tablonun üstüne gelmesidir. Bunun için "tabular" ortamından önce "$\backslash$caption\{\}" komutu kullanılmalıdır. Eğer bu komut "tabular" ortamından sonra kullanılıyor olsaydı başlık tablonun altında kalacaktı. Tablo ile yazı arasında kalan boşluklar istenildiği şekilde ayarlanmıştır. 
+Tablo, oluşturma standart "table" ve "tabular" ortamlarıyla oluşturulabilir. Bu ortamların nasıl kullanılacağı bu dökümanda anlatılmamıştır. Tablo oluşturmada \textbf{dikkat} edilmesi gereken husus başlığın tablonun üstüne gelmesidir. Bunun için "tabular" ortamından önce "$\backslash$caption\{\}" komutu kullanılmalıdır. Eğer bu komut "tabular" ortamından sonra kullanılıyor olsaydı başlık tablonun altında kalacaktı. Tablo ile yazı arasında kalan boşluklar istenildiği şekilde ayarlanmıştır. 
 
 \begin{table}[!htbp]
 	\caption{Örnek tablo}
@@ -123,7 +123,7 @@ Tablo, oluşturma standart "table" ve "tabular" ortamlarıyla oluşturulabilir. 
 	\label{fig:kou}
 \end{figure}
 
-Şekil için dikkat edilecek hususlardan biri şekil açıklamasının şeklin altında olmasıdır. Bunun için tablonun aksine "$\backslash$caption\{\}" komutu ""$\backslash$includegraphics\{\}" komutunun altında olmalıdır. Şekil \ref{fig:kou} oluşturan kod parçası Şekil \ref{code:figure} ile gösterilmiştir.
+Şekil için \textbf{dikkat}  edilecek hususlardan biri şekil açıklamasının şeklin altında olmasıdır. Bunun için tablonun aksine "$\backslash$caption\{\}" komutu ""$\backslash$includegraphics\{\}" komutunun altında olmalıdır. Şekil \ref{fig:kou} oluşturan kod parçası Şekil \ref{code:figure} ile gösterilmiştir.
 
 
 \begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:figure, caption=Kocaeli Üniversitesi logosunun yazımı]
@@ -161,7 +161,7 @@ end{lstlisting}
 \chapter{Denklem Yazımı}
 Denklemler standart "equation" ortamı ile yazılmaktadır. Kılavuzda istenilen format olan denklem sol tarafa yaslı ve numarası sağ tarafa yaslı şeklinde yazılmaktadır. Ayrıca hizalama yapılmak isteniyorsa "alignat" ortamı kullanılması önerilmektedir. Eğer kendi içerisinde harflendirilerek alt denklemler yazılacak ise "subequations" ortamı kullanılması önerilmektedir. 
 
-Denklemlerin yazımında dikkat edilecek hususlardan biri yazı ile denklem arası boşluktur. Bu boşluğun olmaması için denklem ile yazı arasında boş satır olmaması gerekmektedir. Denklem \ref{eq:base} ile bu cümle arasındaki boşluk
+Denklemlerin yazımında \textbf{dikkat}  edilecek hususlardan biri yazı ile denklem arası boşluktur. Bu boşluğun olmaması için denklem ile yazı arasında boş satır olmaması gerekmektedir. Denklem \ref{eq:base} ile bu cümle arasındaki boşluk
 \begin{equation}
 	\label{eq:base}
 	a = b + c
@@ -197,7 +197,7 @@ Dipnotlar ise "$\backslash$footnote\{\}" komutu ile yazılabilmektedir. Her sayf
 
 \chapter{Maddelendirme}
 \label{ch:madde}
-Maddelendirme "maddelendir" ortamı üzerinden oluşturulmaktadır. "maddelendir" ortamı "enumerate" ortamının kılavuza uygun olarak düzenlenmiş halidir. Lakin istenildiği taktirde "enumerate" ortamıda kullanılabilmektedir. Standart "enumerate" ortamı istenilen satır boşluklarını gerçekleştirmeyebilir. Yazar bunu dikkat almalıdır. "maddelendir" ortamında genellikle yazar tarafından maddelendirme şekli değiştirilmektedir. 
+Maddelendirme "maddelendir" ortamı üzerinden oluşturulmaktadır. "maddelendir" ortamı "enumerate" ortamının kılavuza uygun olarak düzenlenmiş halidir. Lakin istenildiği taktirde "enumerate" ortamıda kullanılabilmektedir. Standart "enumerate" ortamı istenilen satır boşluklarını gerçekleştirmeyebilir. Yazar bunu \textbf{dikkate} almalıdır. "maddelendir" ortamında genellikle yazar tarafından maddelendirme şekli değiştirilmektedir. 
 
 \begin{maddelendir}[label=\arabic*.]
 	\item Madde bir.
@@ -279,7 +279,7 @@ Simgeler ve Kısaltlamalar sırasıyla "bolumler/simgeler.tex" ve "bolumler/kisa
 
 "simge" ortamı özet bir maddelendirme ortamıdır. Farkı kılavuzda belirtilen formata özel olmasıdır. İster kısaltmalar isterse simgelerin yazımında "$\backslash$item [kısaltma/simge] açıklama" formatına uygun şekilde maddelendirme yapmak gerekmektedir. Geri kalan format işlemini "simge" ortamı yapmaktadır. 
 
-"simgeler.tex" ve "kisaltmalar.tex" adlı dosyaların kullanımı zorunlu değildir. Yazar isterse kendi dosyalamaları içerisinde kullanabilir. Bu durumda dikkat edilmesi gereken bazı hususlar bulunmaktadır. Bunlar "Simgeler ve Kısaltmalar" bölümünün "$\backslash$chapter*\{Simgeler ve Kısaltmalar\}" komutu ile oluşturmak ve "Kısaltmalar" alt başlığını "$\backslash$tocless$\backslash$section\{Kısaltmalar\}" komutu ile oluşturmaktdır. Burada "$\backslash$tocless" komutu oluşturulan başlığın içindekiler tablosuna eklenmesini önlemektedir. 
+"simgeler.tex" ve "kisaltmalar.tex" adlı dosyaların kullanımı zorunlu değildir. Yazar isterse kendi dosyalamaları içerisinde kullanabilir. Bu durumda \textbf{dikkat} edilmesi gereken bazı hususlar bulunmaktadır. Bunlar "Simgeler ve Kısaltmalar" bölümünün "$\backslash$chapter*\{Simgeler ve Kısaltmalar\}" komutu ile oluşturmak ve "Kısaltmalar" alt başlığını "$\backslash$tocless$\backslash$section\{Kısaltmalar\}" komutu ile oluşturmaktdır. Burada "$\backslash$tocless" komutu oluşturulan başlığın içindekiler tablosuna eklenmesini önlemektedir. 
 
 \chapter{Özet ve Abstract}
 \label{ch:ozet}
@@ -292,7 +292,7 @@ Abstract bölümü özet bölümüyle kullanılan komutlar dışında aynıdır.
 \label{ch:ek}
 Ekler bölümlerinin özelliği başlıkların rakam yerine harflendirme ile gerçekleşmesidir (Ek-A, Ek-B,... gibi). Bunun türkçe karaktere uygun olarak gerçekleşebilmesi için her ekler bölünün "ekler" ortamında yazmak gerekmektedir. Kılavuzda ayrıca ekler bölümünün kapağı için sayfanın ortasına büyük harfler ile "EKLER" yazısının yazılması istenmektedir. "tez.tex" içerisinde gösterilen "$\backslash$eklerolustur" komutu bu görevi gerçekleştirmektedir. Şekil \ref{code:ekler} içerisinde Ek-\ref{ch:ekA} sayfasının yazımı gösterilmiştir. Şekil \ref{code:ekler2} ile "tez.tex" içerisinde ekler bölümünün nasıl oluşturulduğu gösterilmiştir.
 
-Ekler için dikkat edilmesi gerkeen husus ekler ortamı kullanıldığında "$\backslash$chapter" komutu kullanmamaktır. Alt başlıklar için "$\backslash$section" ve diğer alt başlık komutları kullanılmalıdır.
+Ekler için \textbf{dikkat}  edilmesi gerkeen husus ekler ortamı kullanıldığında "$\backslash$chapter" komutu kullanmamaktır. Alt başlıklar için "$\backslash$section" ve diğer alt başlık komutları kullanılmalıdır.
 
 
 \begin{lstlisting}[language={[LaTeX]{TeX}}, label=code:ekler, caption=Örnek ekler sayfası]
@@ -511,7 +511,7 @@ Kaynak patent ise "title" buluş adını, "number" patent numarasını ve "holde
 
 \subsection{Kaynak: Standart}
 
-Kaynak standart ise "author" standartı hazırlayan kurumu, "title" standartın adını ve "address" bulunduğu şehri tutmaktadır. Dikkat edilmesi gereken husus eğer parantez içinde tüm kurum ismi geçecek ise (eğer geçmez ise sadece son kelimesini "soyad" olarak kabul etmektedir) "author" alanı \{\{\}\} içerisinde tanımlanmalıdır.
+Kaynak standart ise "author" standartı hazırlayan kurumu, "title" standartın adını ve "address" bulunduğu şehri tutmaktadır. \textbf{Dikkat} edilmesi gereken husus eğer parantez içinde tüm kurum ismi geçecek ise (eğer geçmez ise sadece son kelimesini "soyad" olarak kabul etmektedir) "author" alanı \{\{\}\} içerisinde tanımlanmalıdır.
 
 \begin{lstlisting}[language={[LaTeX]{TeX}}, label=bib:standart, caption=Kaynak standart ise]
 @misc{standard,
@@ -544,6 +544,6 @@ Kaynak kanun, yönetmelik ya da resmi gazete ise "publisher" kurum adını, "tit
 
 Kişisel yayın ve eser bölümünde ise kaynaklar bölümüne eklenmeyen fakat kaynaklar bölümünde istenilen formata uygun şekilde kaynak basımı gerekmektedir. Bunun için "kisisel.bib" dosyasına yazar ilgili kaynağı önceki bölümde anlatılan şekilde ekledikten sonra ayrıca "author+an = \{1=highlight\}," alanı da eklenmelidir. "$\backslash$kisiselcite{}" komutuyla eser eklenebilmektedir. Bu alanda kılavuzda istenilen "Kişisel yayın ve eserlerin yazımı kaynakların yazım kurallarına uygun olmalıdır. Ek olarak tez/proje yazarının adı kalın olarak yazılmalıdır." şartını sağlayan yazarın ilgili "author" bölümündeki sırasını yazarak o yazarın adı kalınlaştırılmaktadır.
 
-Burada dikkat edilmesi gereken husus iki ayrı ".bib" dosyasının olmasıdır. Eğer yazar, kişisel yayın ve eser bölümünde bahsi geçen eseri aynı zamanda yazı içerisinde de atıflayacak ise, "author+an" alansız halini "kaynaklar.bib" adlı dosyaya da farklı etiket ile eklemelidir.
+Burada \textbf{dikkat} edilmesi gereken husus iki ayrı ".bib" dosyasının olmasıdır. Eğer yazar, kişisel yayın ve eser bölümünde bahsi geçen eseri aynı zamanda yazı içerisinde de atıflayacak ise, "author+an" alansız halini "kaynaklar.bib" adlı dosyaya da farklı etiket ile eklemelidir.
 
 

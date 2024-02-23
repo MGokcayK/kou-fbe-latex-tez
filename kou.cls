@@ -108,6 +108,7 @@
 \RequirePackage{xurl}
 \RequirePackage[numbered,depth=subsection]{bookmark}
 \RequirePackage{xfrac}
+\RequirePackage{parskip}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,7 +153,7 @@
 \makeatletter
 \newenvironment{algoritma}
 {
-	\vspace{\baselineskip}
+	\vspace{12pt}
 	\linespread{1.0}\selectfont
 	\refstepcounter{algorithm}% New algorithm
 	\renewcommand{\caption}[2][\relax]{% Make a new \caption
@@ -298,16 +299,20 @@
 % Sayfa numaralandırmasının düzenlenmesi.
 \pagestyle{plain}
 
-% Paragraf arasırasının 12 nokta (punto) yapılması.
-\setlength{\parindent}{0em}
-\setlength{\parskip}{12pt}
-
 % Satır arasının 1.5 yapılması
 \setstretch{1.5}
 \setlength{\intextsep}{12pt}
-\setlength{\textfloatsep}{\baselineskip}
+\setlength{\textfloatsep}{12pt}
+\setlength{\floatsep}{0pt}
 \setlength{\FrameSep}{0pt}
 \setlength{\fboxsep}{0pt}
+
+% Paragraf arasırasının 12 nokta (punto) yapılması.
+\setlength{\parindent}{0em}
+\setlength{\parskip}{12pt} 
+
+\setlength{\abovecaptionskip}{12pt} 
+\setlength{\belowcaptionskip}{0pt} 
 
 % Tablo ve Şekil etiketlerinin sonuna nokta konulması
 \renewcommand{\thetable}{\thechapter.\arabic{table}.}
@@ -373,6 +378,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bölüm başlıklarının (birinci, ikinci, üçüncü ve dördüncü derece) ayarlanması.
+\newlength{\gTitleTopSpace}
+\setlength{\gTitleTopSpace}{0pt}
+
+\newlength{\gTitleBottomSpace}
+\setlength{\gTitleBottomSpace}{0pt}
 
 % Birinci derece bölüm başlığının düzenlenmesi.
 \titleformat{\chapter}
@@ -386,7 +396,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{chapter}{#1}\MakeUppercase{#1}}
-\titlespacing{\chapter}{0pt}{-\baselineskip-\headheight}{0pt}
+\titlespacing{\chapter}{0pt}{-\baselineskip-\headheight}{-\baselineskip + 12pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % İkinci derece bölüm başlığının düzenlenmesi.
@@ -401,7 +411,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{section}{#1}#1}
-\titlespacing{\section}{0pt}{0pt}{-\baselineskip + 12pt}
+\titlespacing{\section}{0pt}{\gTitleTopSpace}{\gTitleBottomSpace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Üçüncü derece bölüm başlığının düzenlenmesi.
@@ -416,7 +426,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{subsection}{#1}#1}
-\titlespacing{\subsection}{0pt}{0pt}{-\baselineskip + 12pt}
+\titlespacing{\subsection}{0pt}{\gTitleTopSpace}{\gTitleBottomSpace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dördüncü derece bölüm başlığının düzenlenmesi. 
@@ -431,7 +441,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{subsubsection}{#1}#1}
-\titlespacing{\subsubsection}{0pt}{0pt}{-\baselineskip + 12pt}
+\titlespacing{\subsubsection}{0pt}{\gTitleTopSpace}{\gTitleBottomSpace}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -443,7 +453,7 @@
 % Birinci derece bölüm başlıklarının içindekiler listesindeki gösteriminin ayarlanması
 \titlecontents{chapter}% <section-type>
 [0mm]% <left> % not guesswork
-{\vspace{-\baselineskip}}% <above-code>
+{}% <above-code>
 {\thecontentslabel.~\MakeUppercase}% <numbered-entry-format>
 {\MakeUppercase}% <numberless-entry-format>
 {\titlerule*[1mm]{.}\contentspage}% <filler-page-format>
@@ -451,7 +461,7 @@
 % İkinci derece bölüm başlıklarının içindekiler listesindeki gösteriminin ayarlanması
 \titlecontents{section}
 [5mm]
-{\vspace{-\baselineskip}}% <above-code>
+{}% <above-code>
 {\thecontentslabel.~}
 {}
 {\titlerule*[1mm]{.}\contentspage}
@@ -459,7 +469,7 @@
 % Üçüncü derece bölüm başlıklarının içindekiler listesindeki gösteriminin ayarlanması
 \titlecontents{subsection}
 [13mm]
-{\vspace{-\baselineskip}}% <above-code>
+{}% <above-code>
 {\thecontentslabel.~}
 {}
 {\titlerule*[1mm]{.}\contentspage}
@@ -467,7 +477,7 @@
 % Dördüncü derece bölüm başlıklarının içindekiler listesindeki gösteriminin ayarlanması
 \titlecontents{subsubsection}
 [24mm]
-{\vspace{-\baselineskip}}% <above-code>
+{}% <above-code>
 {\thecontentslabel.~}
 {}
 {\titlerule*[1mm]{.}\contentspage}
@@ -475,7 +485,7 @@
 % Şekillerin, Şekil dizini içerisinde gösteriminin ayarlanması
 \titlecontents{figure}
 [2.5cm]
-{\vspace{-\baselineskip}}% <above-code>
+{}% <above-code>
 {\contentslabel[\figurename~\thecontentslabel~]{2.5cm}}
 {\hspace*{-2.5cm}}
 {\titlerule*[1mm]{.}\contentspage}%
@@ -483,7 +493,7 @@
 % Tabloların, tablo dizini içerisinde gösteriminin ayarlanması
 \titlecontents{table}
 [2.5cm]
-{\vspace{-\baselineskip}}% <above-code>
+{}% <above-code>
 {\contentslabel[\tablename~\thecontentslabel~]{2.5cm}}
 {\hspace*{-2.5cm}}
 {\titlerule*[1mm]{.}\contentspage}
