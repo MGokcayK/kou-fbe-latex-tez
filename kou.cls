@@ -62,21 +62,21 @@
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[style=authoryear-icomp,
-				maxbibnames=99,
-				maxcitenames=2,
-				backend=biber, 
-				giveninits,
-				uniquelist=false,
-				uniquename=false,
-				eventdate=comp,
-				dateabbrev=false,
-				sorting=anyt]{biblatex}
+                maxbibnames=99,
+                maxcitenames=2,
+                backend=biber, 
+                giveninits,
+                uniquelist=false,
+                uniquename=false,
+                eventdate=comp,
+                dateabbrev=false,
+                block=none,
+                sorting=anyt]{biblatex}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[style=english]{csquotes}
 \RequirePackage[main=turkish,english,shorthands=:!]{babel}
-%\RequirePackage{appendix}
 \RequirePackage{graphicx}
 \RequirePackage{xy} 
 \RequirePackage{listings}
@@ -105,9 +105,10 @@
 \RequirePackage{quoting}
 \RequirePackage[perpage]{footmisc}
 \RequirePackage{framed}
-\RequirePackage[pdfusetitle, linktoc=all]{hyperref}
+\RequirePackage{xurl}
 \RequirePackage[numbered,depth=subsection]{bookmark}
 \RequirePackage{xfrac}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Kişisel yayın ve eser bölümünde kullanılacak komut oluşturulması
@@ -210,11 +211,14 @@
 	colorlinks   = false, 
 	urlcolor     = blue, 
 	linkcolor    = blue, 
-	citecolor   = red, 
-	pdfborder={0 0 0.0},
+	citecolor    = red, 
+	pdfborder    = {0 0 0.0},
+	breaklinks   = true,
+	linktoc      = all,
+	plainpages   = false,
 }
-
-
+\urlstyle{same}
+\Urlmuskip=0mu plus 1mu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -397,7 +401,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{section}{#1}#1}
-\titlespacing{\section}{0pt}{0pt}{-9.75pt}
+\titlespacing{\section}{0pt}{0pt}{-\baselineskip + 12pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Üçüncü derece bölüm başlığının düzenlenmesi.
@@ -412,7 +416,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{subsection}{#1}#1}
-\titlespacing{\subsection}{0pt}{0pt}{-9.75pt}
+\titlespacing{\subsection}{0pt}{0pt}{-\baselineskip + 12pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dördüncü derece bölüm başlığının düzenlenmesi. 
@@ -427,7 +431,7 @@
 {}
 {0pt}
 {\addcontentsline{toc}{subsubsection}{#1}#1}
-\titlespacing{\subsubsection}{0pt}{0pt}{-9.75pt}
+\titlespacing{\subsubsection}{0pt}{0pt}{-\baselineskip + 12pt}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -494,14 +498,6 @@
 \newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
 \addtocontents{lof}{\protect\noaddvspace}
 \addtocontents{lot}{\protect\noaddvspace}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% hyperref ve `\MakeUppercase` kullanımı sonucu çıkan hata çözümü : https://github.com/latex3/hyperref/issues/121
-\makeatletter
-\let\ORG@hyper@linkstart\hyper@linkstart
-\protected\def\hyper@linkstart#1#2{%
-	\lowercase{\ORG@hyper@linkstart{#1}{#2}}}
-\makeatother
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -894,7 +890,7 @@
 % Dergi sayfa numarasının düzenlenmesi.
 \DeclareFieldFormat[article]{pages}{#1}
 % Dergi DOI numarasının düzenlenmesi.
-\DeclareFieldFormat[article]{doi}{DOI: \ifhyperref	{\href{https://doi.org/#1}{#1}}{{#1}}}
+\DeclareFieldFormat[article]{doi}{DOI: {\url{https://doi.org/#1}}}
 
 % Makale formatının düzenlenmesi.
 \DeclareBibliographyDriver{article}{%
@@ -1089,7 +1085,7 @@
 % Web Sayfası (online) format duzenlenmesi.
 
 % Verılen linklerin formatının düzenlenmesi.
-\DeclareFieldFormat[online]{url}{\ifhyperref	{\href{#1}{#1}}{{#1}}}
+\DeclareFieldFormat[online]{url}{\url{#1}}
 
 % Yazarsız ve nocite ile verilen linklerin sayacı.
 \newcounter{nocitecounter}
