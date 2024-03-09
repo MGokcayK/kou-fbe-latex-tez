@@ -496,7 +496,7 @@
 \titlecontents{figure}
 [2.5cm]
 {}% <above-code>
-{\contentslabel[\figurename~\thecontentslabel~]{2.5cm}}
+{\contentslabel[\figurename~\thecontentslabel.~]{2.5cm}}
 {\hspace*{-2.5cm}}
 {\titlerule*[1mm]{.}\contentspage}%
 
@@ -504,7 +504,7 @@
 \titlecontents{table}
 [2.5cm]
 {}% <above-code>
-{\contentslabel[\tablename~\thecontentslabel~]{2.5cm}}
+{\contentslabel[\tablename~\thecontentslabel.~]{2.5cm}}
 {\hspace*{-2.5cm}}
 {\titlerule*[1mm]{.}\contentspage}
 
