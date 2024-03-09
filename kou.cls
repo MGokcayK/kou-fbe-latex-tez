@@ -229,7 +229,6 @@
 \colorlet{mymauve}{red!60!blue}
 
 
-
 \newlength{\lsttop}
 \setlength{\lsttop}{0.0mm}
 %%%%%%%%%%%%% BUNU TEKRAR DUZENLE %%%%%%%%%%%%%%%%%%%%%%
@@ -279,18 +278,6 @@
 %	{°}{{\textdegree}}1 {º}{{\textordmasculine}}1 {ª}{{\textordfeminine}}1
 }
 
-
-% Listing sayacı ve isimlendirmesinin figür ile eşitlenmesi
-\makeatletter
-\AtBeginDocument{
-	\let\lstlistingname\figurename
-	\let\thelstlisting\thefigure
-	\let\c@lstlisting\c@figure
-	\let\ftype@lstlisting\ftype@figure
-}
-\makeatother
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Sayfa geometrisinin ayarlanması
@@ -315,8 +302,31 @@
 \setlength{\belowcaptionskip}{0pt} 
 
 % Tablo ve Şekil etiketlerinin sonuna nokta konulması
-\renewcommand{\thetable}{\thechapter.\arabic{table}.}
-\renewcommand{\thefigure}{\thechapter.\arabic{figure}.}
+%\renewcommand{\thetable}{\thechapter.\arabic{table}.}0
+%\renewcommand{\thefigure}{\thechapter.\arabic{figure}.}
+\DeclareCaptionLabelFormat{gFig}{Şekil \thechapter.\arabic{figure}.}
+\captionsetup[figure]{labelformat=gFig}
+\captionsetup[lstlisting]{labelformat=gFig}
+\DeclareCaptionLabelFormat{gTable}{Tablo \thechapter.\arabic{table}.}
+\captionsetup[table]{labelformat=gTable}
+
+% Listing sayacı ve isimlendirmesinin figür ile eşitlenmesi ve listing ortamının şekil dizinine eklenmesi
+\makeatletter
+\AtBeginDocument{
+	\immediate\write\@auxout{%
+		\string\let\string\tf@lol\string\tf@lof
+	}
+	\let\lstlistingname\figurename
+	\let\thelstlisting\thefigure
+	\let\l@lstlisting\l@figure
+	\let\c@lstlisting\c@figure
+	\let\ftype@lstlisting\ftype@figure
+	\let\c@figure\c@lstlisting
+	\let\thefigure\thelstlisting
+	\let\ftype@lstlisting\ftype@figure
+}
+\makeatother
+
 
 % Denklemlerin sol tarafa yaklaştırılması
 % Denklem öncesi ve sonrası boşlukların ayarlanması

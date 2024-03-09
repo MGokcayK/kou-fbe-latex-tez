@@ -1,0 +1,65 @@
+\babel@toc {turkish}{}\relax 
+\contentsline {chapter}{Etik Beyan ve Araştırma Fonu Desteği}{i}{section*.1}%
+\contentsline {chapter}{Yayımlama ve Fikri Mülkiyet Hakları}{ii}{section*.2}%
+\contentsline {chapter}{Önsöz ve Teşekkür}{iii}{chapter*.3}%
+\contentsline {chapter}{\.I\c cindekiler}{iv}{chapter*.4}%
+\contentsline {chapter}{Şekiller Dizini}{vi}{chapter*.5}%
+\contentsline {chapter}{Tablolar Dizini}{vii}{chapter*.6}%
+\contentsline {chapter}{Simgeler ve Kısaltmalar Dizini}{viii}{chapter*.7}%
+\contentsline {chapter}{Özet}{ix}{section*.8}%
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Abstract}{x}{section*.9}%
+\babel@toc {turkish}{}\relax 
+\contentsline {chapter}{\numberline {1}Giriş}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Tez Yazımı}{2}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Başlıklar}{9}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Sayfa Numaralandırması}{10}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Tablo, Şekil ve Kod Parçaları}{11}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Tablo Oluşturma}{11}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Şekil Oluşturma}{12}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Kod Parçası}{13}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Denklem Yazımı}{14}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Alıntılar ve Dipnotlar}{15}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Dipnotlar}{15}{section.7.1}%
+\contentsline {chapter}{\numberline {8}Maddelendirme}{16}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Algoritma}{17}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Yatay Sayfa}{19}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Simgeler ve Kısaltmalar}{20}{chapter.11}%
+\contentsline {chapter}{\numberline {12}Özet ve Abstract}{21}{chapter.12}%
+\contentsline {chapter}{\numberline {13}Ekler Sayfası}{22}{chapter.13}%
+\contentsline {chapter}{\numberline {14}Referans Verme ve Atıf}{23}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Atıf}{23}{section.14.1}%
+\contentsline {subsection}{\numberline {14.1.1}$\backslash $cite\{\} Komutu}{23}{subsection.14.1.1}%
+\contentsline {subsection}{\numberline {14.1.2}$\backslash $cite*\{\} Komutu}{23}{subsection.14.1.2}%
+\contentsline {subsection}{\numberline {14.1.3}$\backslash $citeauthor\{\} Komutu}{23}{subsection.14.1.3}%
+\contentsline {subsection}{\numberline {14.1.4}$\backslash $citedate\{\} Komutu}{23}{subsection.14.1.4}%
+\contentsline {subsection}{\numberline {14.1.5}$\backslash $citemanual\{\} Komutu}{23}{subsection.14.1.5}%
+\contentsline {subsection}{\numberline {14.1.6}$\backslash $citetitle\{\} Komutu}{23}{subsection.14.1.6}%
+\contentsline {subsection}{\numberline {14.1.7}$\backslash $citetitle*\{\} Komutu}{23}{subsection.14.1.7}%
+\contentsline {subsection}{\numberline {14.1.8}$\backslash $citeyear\{\} Komutu}{23}{subsection.14.1.8}%
+\contentsline {subsection}{\numberline {14.1.9}$\backslash $citeurl\{\} Komutu}{23}{subsection.14.1.9}%
+\contentsline {subsection}{\numberline {14.1.10}$\backslash $autocite\{\} Komutu}{23}{subsection.14.1.10}%
+\contentsline {subsection}{\numberline {14.1.11}$\backslash $autocite*\{\} Komutu}{23}{subsection.14.1.11}%
+\contentsline {subsection}{\numberline {14.1.12}$\backslash $textcite\{\} Komutu}{24}{subsection.14.1.12}%
+\contentsline {subsection}{\numberline {14.1.13}$\backslash $textcite*\{\} Komutu}{24}{subsection.14.1.13}%
+\contentsline {subsection}{\numberline {14.1.14}$\backslash $autocite\{\} İki Yazarlı Atıf}{24}{subsection.14.1.14}%
+\contentsline {subsection}{\numberline {14.1.15}$\backslash $autocite\{\} Üç Yazarlı Atıf}{24}{subsection.14.1.15}%
+\contentsline {section}{\numberline {14.2}Kaynaklar}{24}{section.14.2}%
+\contentsline {subsection}{\numberline {14.2.1}Kaynak: Basılı Makale}{24}{subsection.14.2.1}%
+\contentsline {subsection}{\numberline {14.2.2}Kaynak: Yayına Kabul Edilmiş Makale}{25}{subsection.14.2.2}%
+\contentsline {subsection}{\numberline {14.2.3}Kaynak: Kitap}{25}{subsection.14.2.3}%
+\contentsline {subsection}{\numberline {14.2.4}Kaynak: Kitaptan Bir Bölüm}{26}{subsection.14.2.4}%
+\contentsline {subsection}{\numberline {14.2.5}Kaynak: Bildiri}{26}{subsection.14.2.5}%
+\contentsline {subsection}{\numberline {14.2.6}Kaynak: Basılmış Tez}{27}{subsection.14.2.6}%
+\contentsline {subsection}{\numberline {14.2.7}Kaynak: Rapor}{28}{subsection.14.2.7}%
+\contentsline {subsection}{\numberline {14.2.8}Kaynak: Web Sayfası}{28}{subsection.14.2.8}%
+\contentsline {subsection}{\numberline {14.2.9}Kaynak: Patent}{29}{subsection.14.2.9}%
+\contentsline {subsection}{\numberline {14.2.10}Kaynak: Standart}{29}{subsection.14.2.10}%
+\contentsline {subsection}{\numberline {14.2.11}Kaynak: Kanun, Yönetmelik ya da Resmi Gazete}{30}{subsection.14.2.11}%
+\contentsline {chapter}{\numberline {15}Özgeçmiş / Kişisel Yayın ve Eser Bölümleri }{31}{chapter.15}%
+\contentsline {chapter}{Kaynaklar}{32}{chapter*.12}%
+\contentsline {chapter}{Ekler}{33}{section*.13}%
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{Kişisel Yayın ve Eserler}{35}{chapter*.14}%
+\contentsline {chapter}{Özgeçmiş}{36}{chapter*.15}%
+\contentsfinish 
